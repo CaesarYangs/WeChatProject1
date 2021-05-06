@@ -1,21 +1,44 @@
 {
-  "pages":[
+  "pages": [
+    "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/setting/setting",
+    "pages/calendar/calendar",
+    "pages/analysis/analysis"
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#fff",
-    
-
-
-
-
-
-    
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#E5E5E5",
+    "navigationBarTitleText": "小小小小小程序",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "selectedColor": "DAC935",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "iconPath": "pages/assets/list_fill.png",
+      "text": "home"
+    },
+    {
+      "pagePath": "pages/calendar/calendar",
+      "iconPath": "pages/assets/cal_fill.png",
+      "text": "calendar"
+    },
+    {
+      "pagePath": "pages/analysis/analysis",
+      "iconPath": "pages/assets/ana_fill.png",
+      "text": "analysis"
+    },
+    {
+      "pagePath": "pages/index/index",
+      "iconPath": "pages/assets/set_fill.png",
+      "text": "setting"
+    }
+
+    ]
+  }
 }
