@@ -1,1 +1,2 @@
 /* pages/analysis/analysis.wxss */
+@import 'analysis-wxa-auto-dark.wxss'

@@ -5,15 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      wx.cloud.database().collection('task1')
+      /*.get({
 
-  },
+        success(res){
+            console.log("请求成功",res)
+        },
+
+        fail(error){
+            console.log("请求失败",error)
+        }
+      })//查询*/
+  
+      //es6简洁写法
+      wx.cloud.database().collection('task1').get() 
+        .then(res=>{
+          console.log("请求成功",res)
+          this.setData({
+            list: res.data
+          })
+        })
+        .catch(err=>{
+          console.log("请求成功",err)
+        })
+  
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

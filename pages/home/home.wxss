@@ -1,1 +1,2 @@
 /* pages/home.wxss */
+@import 'home-wxa-auto-dark.wxss'

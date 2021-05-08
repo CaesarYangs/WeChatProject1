@@ -17,3 +17,5 @@
 .usermotto {
   margin-top: 200px;
 }
+
+@import 'index-wxa-auto-dark.wxss'

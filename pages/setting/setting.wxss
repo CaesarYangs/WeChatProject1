@@ -1,1 +1,2 @@
 /* pages/setting/setting.wxss */
+@import 'setting-wxa-auto-dark.wxss'

@@ -1,3 +1,18 @@
 <!--pages/home.wxml-->
+<view wx:for="{{list}}">
+  <view>res:连接成功</view>
+  <view>id:{{item.id}}</view>
+  <view>name:{{item.name}}</view>
+  <view>task:{{item.taskname}}</view>
+  <view>done? : {{item.done}}</view>
+</view>
+
+<view wx:for="{{list}}">
+  <view>res:连接成功</view>
+  <view>id:{{item.id}}</view>
+  <view>name:{{item.name}}</view>
+  <view>task:{{item.taskname}}</view>
+  <view>done? : {{item.done}}</view>
+</view>
 <text>pages/home.wxml</text>
 <text>helllllllllo</text>
