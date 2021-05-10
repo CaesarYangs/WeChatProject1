@@ -11,7 +11,8 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#E5E5E5",
     "navigationBarTitleText": "小小小小小程序",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

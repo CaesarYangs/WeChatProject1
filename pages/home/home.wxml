@@ -14,5 +14,21 @@
   <view>task:{{item.taskname}}</view>
   <view>done? : {{item.done}}</view>
 </view>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Dialog</view>
+        <view class="page__desc">对话框</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="fresh">只有确认按钮</button>
+        </view>
+    </view>
+    <mp-dialog title="已刷新" show="{{showFreshDialog}}" bindbuttontap="fresh" buttons="{{oneButton}}">
+        <view>请点击关闭</view>
+    </mp-dialog>
+</view>
+
 <text>pages/home.wxml</text>
 <text>helllllllllo</text>

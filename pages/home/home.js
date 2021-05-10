@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buttons: [{text: '取消'}, {text: '确定'}],
+    oneButton: [{text: '确定'}],
+    dialogShow: false,
     list:[]
   },
 
@@ -70,14 +73,42 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.openConfirm()
+      // 显示导航栏loading
+    wx.showNavigationBarLoading();
+    // 调用接口加载数据
+    //this.loadData();
+    // 隐藏导航栏loading
+    wx.hideNavigationBarLoading();
+    // 当处理完数据刷新后，wx.stopPullDownRefresh可以停止当前页面的下拉刷新
+    wx.stopPullDownRefresh();
+    this.freshdialog();
   },
+
+  openConfirm: function () {
+    this.setData({
+      dialogShow: true
+    })
+},
+
+tapDialogButton(e) {
+  this.setData({
+      dialogShow: false,
+      showOneButtonDialog: false
+  })
+},
+freshdialog(e) {
+  this.setData({
+      dialogShow: false,
+      showFreshDialog: true
+  })
+},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function (e) {
+      
   },
 
   /**
