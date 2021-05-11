@@ -1,13 +1,15 @@
 // pages/home.js
+var appppp = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    motto:"hello world",
     buttons: [{text: '取消'}, {text: '确定'}],
     oneButton: [{text: '确定'}],
     dialogShow: false,
+    showOneButtonDialog: false,
     list:[]
   },
 
@@ -73,7 +75,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.openConfirm()
       // 显示导航栏loading
     wx.showNavigationBarLoading();
     // 调用接口加载数据
@@ -82,7 +83,40 @@ Page({
     wx.hideNavigationBarLoading();
     // 当处理完数据刷新后，wx.stopPullDownRefresh可以停止当前页面的下拉刷新
     wx.stopPullDownRefresh();
-    this.freshdialog();
+    wx.showToast({
+      title: '刷新成功~',
+      icon: 'success',
+      duration: 1000
+    })
+  },
+
+  done:function(e) {
+    wx.showToast({
+      title: '按过了',
+      icon: 'success',
+      duration: 1000
+    })
+    this.setData({
+      dialogShow: false,
+      showOneButtonDialog: false,
+      
+  })
+  },
+
+  changeText: function(){
+    var a = appppp.globalData.userSignature;
+    wx.showToast({
+      title: a
+    })
+      this.setData({
+        motto: "你好 世界"
+      })
+  },
+
+  jumpTo: function(){
+      wx.navigateTo({
+        url: '../setting/setting',
+      })
   },
 
   openConfirm: function () {
@@ -94,13 +128,21 @@ Page({
 tapDialogButton(e) {
   this.setData({
       dialogShow: false,
-      showOneButtonDialog: false
+      showOneButtonDialog: false,
+      
+  })
+  console.log("请求成功")
+},
+
+tapOneDialogButton(e) {
+  this.setData({
+      showOneButtonDialog: true
   })
 },
-freshdialog(e) {
+
+fresh(e) {
   this.setData({
-      dialogShow: false,
-      showFreshDialog: true
+      showOneButtonDialog: true
   })
 },
 

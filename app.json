@@ -9,7 +9,8 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#E5E5E5",
+    "backgroundColor":"#ffff00",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "小小小小小程序",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
@@ -21,23 +22,23 @@
     "selectedColor": "DAC935",
     "list": [{
       "pagePath": "pages/home/home",
-      "iconPath": "pages/assets/list_fill.png",
-      "text": "home"
+      "iconPath": "pages/assets/list_fill.png"
+      
     },
     {
       "pagePath": "pages/calendar/calendar",
-      "iconPath": "pages/assets/cal_fill.png",
-      "text": "calendar"
+      "iconPath": "pages/assets/cal_fill.png"
+      
     },
     {
       "pagePath": "pages/analysis/analysis",
-      "iconPath": "pages/assets/ana_fill.png",
-      "text": "analysis"
+      "iconPath": "pages/assets/ana_fill.png"
+      
     },
     {
       "pagePath": "pages/index/index",
-      "iconPath": "pages/assets/set_fill.png",
-      "text": "setting"
+      "iconPath": "pages/assets/set_fill.png"
+    
     }
 
     ]
