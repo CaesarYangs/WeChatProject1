@@ -1,0 +1,39 @@
+<view>
+
+<view class="user">
+  <view class="tapp">
+    <button open-type="getUserProfile" bindtap="auth" wx:if="{{showauth}}">授权登录</button>
+    <label wx:if="{{showauth}}">未登录 请点击登录</label>
+  </view>
+  <block>
+    <image class="userinfo-avatar" src="{{localuserInfo.avatarUrl}}"></image>
+    <text class="userNickName">{{localuserInfo.nickName}}</text>
+  </block>
+</view>
+  <!-- <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata"> -->
+      <!-- <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data> -->
+    <!-- </block> -->
+    <!-- <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block> -->
+</view>
+
+<button type="default" bindtap="logout">退出登录</button>
+<view class="list"> 01 </view>
+<view class="list"> 02 </view>
+<view class="list"> 03 </view>
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+/* pages/SettingPage/settingpage.wxss */
+.user{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 10px;
+  align-items: center;
+}
+
+.list{
+  width: auto;
+  height: 40px;
+  background-color: antiquewhite;
+  margin:5px;
+}
+
+.nickname{
+  width: auto;
+  height: 50px;
+  background-color: antiquewhite;
+  margin: 20px;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfos{
+  flex-direction: row;
+  margin: 50px;
+}
+

@@ -1,15 +1,18 @@
 {
   "pages": [
+    "pages/SettingPage/settingpage",
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/add/add",
     "pages/setting/setting",
     "pages/calendar/calendar",
     "pages/analysis/analysis"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor":"#ffff00",
+    "backgroundColor":"#F05E1C",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "小小小小小程序",
     "navigationBarTextStyle": "black",
@@ -18,26 +21,37 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "color": "#111",
     "backgroundColor": "#FFFFFF",
-    "selectedColor": "DAC935",
+    "borderStyle": "black",
+    "selectedColor": "#F69C21",
     "list": [{
       "pagePath": "pages/home/home",
-      "iconPath": "pages/assets/list_fill.png"
-      
+      "iconPath": "pages/assets/tabbar icons/home-3-line.png",
+      "selectedIconPath": "pages/assets/tabbar icons/home-3-line-1.png"
     },
     {
       "pagePath": "pages/calendar/calendar",
-      "iconPath": "pages/assets/cal_fill.png"
+      "iconPath": "pages/assets/tabbar icons/Calendar.png",
+      "selectedIconPath": "pages/assets/tabbar icons/Calendar-1.png"
+      
+    },
+    {
+      "pagePath": "pages/add/add",
+      "iconPath": "pages/assets/tabbar icons/Plus.png",
+      "selectedIconPath": "pages/assets/tabbar icons/Plus-1.png"
       
     },
     {
       "pagePath": "pages/analysis/analysis",
-      "iconPath": "pages/assets/ana_fill.png"
+      "iconPath": "pages/assets/tabbar icons/search-line.png",
+      "selectedIconPath": "pages/assets/tabbar icons/search-line-1.png"
       
     },
     {
-      "pagePath": "pages/index/index",
-      "iconPath": "pages/assets/set_fill.png"
+      "pagePath": "pages/SettingPage/settingpage",
+      "iconPath": "pages/assets/tabbar icons/settings-line.png",
+      "selectedIconPath": "pages/assets/tabbar icons/settings-line-1.png"
     
     }
 

@@ -30,7 +30,9 @@ App({
     console.log(userinfo)
   },
   globalData: {
-    userInfo: null,
-    userSignature:null
+    userInfo:{},
+    userSignature:null,
+    userNickName:null,
+    userAvatarURL:null
   }
 })
