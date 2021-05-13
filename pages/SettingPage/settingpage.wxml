@@ -29,10 +29,98 @@
 
 <button type="default" bindtap="logout">退出登录</button>
 
-<view class="switch1">
-  <text class="switch1text">switch 1</text>
-  <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+
+
+
+<!-- 设置页面开关们 -->
+
+<view class="setblock">
+  <text class="smallListTitle">软件设置</text>
+  <view class="switch1">
+    <view class="switch1texticon">
+      <image style="width: 22px; height: 22px;"src="../assets/settingicon/Bell.png"></image>
+      <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+      <text class="switch1text">消息提醒通知</text>
+    </view>
+ 
+  <switch checked="{{switch1Checked}}" bindchange="switch1Change" color="#F05E1C"/>
 </view>
+
+<view class="switch1">
+  <view class="switch1texticon">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/PaperPlaneTilt.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text class="switch1text">快捷记录模式</text>
+  </view>
+  
+  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+</view>
+
+<view class="settext">
+  <view class="switch1texticon">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/Keyboard.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>首页卡片样式设置</text>
+  </view>
+  
+</view>
+
+<view class="switch1">
+  <text class="switch1text">switch 3</text>
+  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+</view>
+
+<view class="switch1">
+  <text class="switch1text">switch</text>
+  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+</view>
+</view>
+
+<view class="blank"> </view>
+<!-- 关于部分按钮 -->
+<view class="setblock">
+
+<text class="smallListTitle">关于</text>
+
+<view class="settext">
+  <image style="width: 22px; height: 22px;"src="../assets/settingicon/Hand.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>帮助</text>
+</view>
+
+<view class="settext">
+  <image style="width: 22px; height: 22px;"src="../assets/settingicon/Path.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>关于软件</text>
+</view>
+
+<view class="blank"> </view>
+
+
+<view class="settext">
+  <image style="width: 22px; height: 22px;"src="../assets/settingicon/ChatDots.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>问题反馈</text>
+</view> 
+</view>
+
+<!-- 交个盆友 -->
+<view class="blank"> </view>
+<view class="setblock">
+  <text class="smallListTitle">交个朋友</text>
+  <view class="settext">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/Users.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>关于开发者</text>
+  </view>
+  <view class="settext">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/Lightning.png"></image>
+    <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+    <text>好评鼓励</text>
+  </view>
+</view>
+
+
 <view class="list"> 01 </view>
 <view class="list"> 02 </view>
 <view class="list"> 03 </view>
