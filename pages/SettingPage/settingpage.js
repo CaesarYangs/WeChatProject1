@@ -13,7 +13,8 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
     nn:null,
-    showauth:true
+    showauth:true,
+    switch1Checked: false
 
   },
 

@@ -28,6 +28,11 @@
 </view>
 
 <button type="default" bindtap="logout">退出登录</button>
+
+<view class="switch1">
+  <text class="switch1text">switch 1</text>
+  <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+</view>
 <view class="list"> 01 </view>
 <view class="list"> 02 </view>
 <view class="list"> 03 </view>
