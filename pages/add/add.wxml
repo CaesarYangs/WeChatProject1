@@ -1,2 +1,9 @@
 <!--pages/add/add.wxml-->
-<text>pages/add/add.wxml</text>
+<view>
+
+  <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+
+<button bindtap="addTask">添加任务</button>
+
+
+</view>

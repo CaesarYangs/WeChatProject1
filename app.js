@@ -33,6 +33,7 @@ App({
     userInfo:{},
     userSignature:null,
     userNickName:null,
-    userAvatarURL:null
+    userAvatarURL:null,
+    settingFastNote:null
   }
 })

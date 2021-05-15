@@ -5,14 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    title:'',
+    inputTaskName: '',
+    titleEmpty: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -33,14 +35,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -62,5 +64,59 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+  addTask:function(){
+    
+    var title = this.data.title
+    console.log(title)
+
+
+    wx.cloud.database().collection('task1')
+    .add({
+      data:{
+        name:'yyq',
+        taskname:title
+      }
+    })
+    .then(res=>{
+        console.log('添加成功',res)
+        wx.showToast({
+          title: '添加成功',
+          icon:"success"
+        })
+        this.clearTitle()
+    })
+    .catch(res=>{
+      console.log('添加失败',res)
+      wx.showToast({
+        title: '添加失败 请重试',
+        icon:"loading"
+      })
+    })
+
+
+    
+  },
+  inputTitle: function (e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+
+  clearTitle: function () {
+    this.setData({
+      title: '',
+      titleEmpty: true
+    })
+  },
+
+  bindKeyInput: function (e) {
+    this.setData({
+      //inputTaskName: e.detail.value
+    })
+    console.log(e.detail.value)
+  },
+
 })

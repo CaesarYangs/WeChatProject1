@@ -12,6 +12,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
+    switch_settingFastNoteChecked:false,
     nn:null,
     showauth:true,
     switch1Checked: false
@@ -49,6 +50,12 @@ Page({
       })
       this.test()
     }
+    var c = app.globalData.settingFastNote
+    this.setData({
+      switch_settingFastNoteChecked:c
+    })
+
+
   },
 
   bindViewTap() {
@@ -140,5 +147,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  switch_settingFastNote:function(e){
+    app.globalData.settingFastNote = e.detail.value
   }
 })

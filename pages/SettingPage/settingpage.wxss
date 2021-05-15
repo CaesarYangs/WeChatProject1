@@ -44,7 +44,7 @@ page{
   margin: 20px;
   padding: 5px;
   border-radius: 4.5%;
-  box-shadow:0 1rpx 15rpx 1rpx #C4C4C4;
+  /* box-shadow:0 0rpx 5rpx 0rpx #C4C4C4; */
 }
 
 

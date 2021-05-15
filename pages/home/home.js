@@ -1,5 +1,5 @@
 // pages/home.js
-var appppp = getApp()
+var app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -17,19 +17,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
       wx.cloud.database().collection('task1')
-      /*.get({
-
-        success(res){
-            console.log("请求成功",res)
-        },
-
-        fail(error){
-            console.log("请求失败",error)
-        }
-      })//查询*/
-  
-      //es6简洁写法
       wx.cloud.database().collection('task1').get() 
         .then(res=>{
           console.log("请求成功",res)
@@ -54,21 +43,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    if (app.globalData.settingFastNote==true){
+      wx.switchTab({
+        url: '../add/add',
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**

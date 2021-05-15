@@ -53,7 +53,7 @@
     <text class="switch1text">快捷记录模式</text>
   </view>
   
-  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+  <switch checked="{{switch_settingFastNoteChecked}}" bindchange="switch_settingFastNote" color="#F05E1C"/>
 </view>
 
 <view class="settext">
