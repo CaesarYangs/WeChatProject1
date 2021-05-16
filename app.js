@@ -35,5 +35,20 @@ App({
     userNickName:null,
     userAvatarURL:null,
     settingFastNote:null
+  },
+  onShow(){
+    wx.onAppShow((result) => {
+      if (this.globalData.settingFastNote){
+        wx.switchTab({
+          url: '../add/add',
+        })
+      }
+    })
+  },
+
+  onHide(){
+      wx.onAppHide((res) => {
+        
+      })
   }
 })

@@ -2,8 +2,17 @@
 <view>
 
   <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+<view class="sectiondate">
+  <!-- <view class="section__title">日期选择</view> -->
+    <picker mode="date" value="{{date}}" start="{{systemdate}}"  bindchange="bindDateChange">
+      <view class="picker">
+        <image style="width: 80px; height: 80px;"src="../assets/settingicon/PaperPlaneTilt.png"></image>
+        {{taskDate}}
+      </view>
+    </picker>
+ </view>
 
-<button bindtap="addTask">添加任务</button>
+  <button bindtap="addTask">添加任务</button>
 
 
 </view>

@@ -1,4 +1,5 @@
 // pages/add/add.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
   data: {
     title:'',
     inputTaskName: '',
+    taskDate:'',
     titleEmpty: true
   },
 
@@ -14,7 +16,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var time = util.formatTime(new Date());
+    this.setData({
+      systemdate:time
+    })
   },
 
   /**
@@ -70,14 +75,15 @@ Page({
   addTask:function(){
     
     var title = this.data.title
+    var date = this.data.taskDate
     console.log(title)
 
 
-    wx.cloud.database().collection('task1')
+    wx.cloud.database().collection('task2')
     .add({
       data:{
-        name:'yyq',
-        taskname:title
+        taskname:title,
+        taskdate:date
       }
     })
     .then(res=>{
@@ -87,6 +93,7 @@ Page({
           icon:"success"
         })
         this.clearTitle()
+        this.clearDate()
     })
     .catch(res=>{
       console.log('添加失败',res)
@@ -112,11 +119,23 @@ Page({
     })
   },
 
+  clearDate:function(){
+    this.setData({
+      taskDate:''
+    })
+  },
+
   bindKeyInput: function (e) {
     this.setData({
       //inputTaskName: e.detail.value
     })
     console.log(e.detail.value)
   },
+
+  bindDateChange:function(e){
+    this.setData({
+      taskDate: e.detail.value
+     })
+  }
 
 })

@@ -1,25 +1,59 @@
-// pages/home.js
-var app = getApp()
+// home.js
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    motto:"hello world",
-    buttons: [{text: '取消'}, {text: '确定'}],
-    oneButton: [{text: '确定'}],
-    dialogShow: false,
-    showOneButtonDialog: false,
-    list:[]
+    list:[],
+    iconType: 'search',
+    //背景图
+    carouselImgUrls:[
+      "../../image/cal.png",
+      "../../image/camera.PNG",
+    ],
   },
+  // 使文本框进入可编辑状态
+  showInput: function () {
+    this.setData({
+      inputShowed: true   //设置文本框可以输入内容
+    });
+  },
+  // 取消搜索
+  hideInput: function () {
+    this.setData({
+      inputShowed: false
+    });
+  },
+  searchDetail(){
+    wx.navigateTo({
+      url: 'search/search',
+    })
+  }, 
+  
+  //结合数据库
+ iniData:function(){
+    // var array=[];
+    // var object1 = new Object();
+    // object1.img="../../image/cal.png";
+    // object1.biaoti="标题";
+    // object1.leirong="内容";
+    // object1.xinqin="心情";
+    // object1.riqi = "日期"
 
+    // array[0] =object1;
+    // array[1] =object1;
+    // array[2] = object1;
+    // array[3] = object1;
+    // return array;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     
-      wx.cloud.database().collection('task1')
-      wx.cloud.database().collection('task1').get() 
+    wx.cloud.database().collection('task2')
+      wx.cloud.database().collection('task2').get() 
         .then(res=>{
           console.log("请求成功",res)
           this.setData({
@@ -29,9 +63,8 @@ Page({
         .catch(err=>{
           console.log("请求成功",err)
         })
+  },
   
-    },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -43,107 +76,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    // this.onLoad()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    if (app.globalData.settingFastNote==true){
-      wx.switchTab({
-        url: '../add/add',
-      })
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-      // 显示导航栏loading
-    wx.showNavigationBarLoading();
-    // 调用接口加载数据
-    //this.loadData();
-    // 隐藏导航栏loading
-    wx.hideNavigationBarLoading();
-    // 当处理完数据刷新后，wx.stopPullDownRefresh可以停止当前页面的下拉刷新
-    wx.stopPullDownRefresh();
-    wx.showToast({
-      title: '刷新成功~',
-      icon: 'success',
-      duration: 1000
-    })
+    wx.cloud.database().collection('task2')
+      wx.cloud.database().collection('task2').get() 
+        .then(res=>{
+          console.log("请求成功",res)
+          this.setData({
+            list: res.data
+          })
+          wx.stopPullDownRefresh();
+          wx.showToast({
+            title: '刷新成功',
+            icon:"success",
+            duration: 1000
+          })
+        })
+        .catch(err=>{
+          console.log("请求成功",err)
+        })
   },
-
-  done:function(e) {
-    wx.showToast({
-      title: '按过了',
-      icon: 'success',
-      duration: 1000
-    })
-    this.setData({
-      dialogShow: false,
-      showOneButtonDialog: false,
-      
-  })
-  },
-
-  changeText: function(){
-    var a = appppp.globalData.userSignature;
-    wx.showToast({
-      title: a
-    })
-      this.setData({
-        motto: "你好 世界"
-      })
-  },
-
-  jumpTo: function(){
-      wx.navigateTo({
-        url: '../setting/setting',
-      })
-  },
-
-  openConfirm: function () {
-    this.setData({
-      dialogShow: true
-    })
-},
-
-tapDialogButton(e) {
-  this.setData({
-      dialogShow: false,
-      showOneButtonDialog: false,
-      
-  })
-  console.log("请求成功")
-},
-
-tapOneDialogButton(e) {
-  this.setData({
-      showOneButtonDialog: true
-  })
-},
-
-fresh(e) {
-  this.setData({
-      showOneButtonDialog: true
-  })
-},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function (e) {
-      
+  onReachBottom: function () {
+
   },
 
   /**
@@ -151,5 +128,6 @@ fresh(e) {
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  
 })
