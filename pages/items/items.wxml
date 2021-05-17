@@ -1,0 +1,7 @@
+<!--pages/items/items.wxml-->
+<view>
+  <text>任务名: {{task.taskname}}</text>
+</view>
+
+
+<text>截止日期: {{task.taskdate}}</text>

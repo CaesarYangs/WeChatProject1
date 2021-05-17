@@ -1,5 +1,5 @@
 // home.js
-
+const App = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -128,6 +128,30 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //跳转到商品详情页
+  seeDetail:function(e){
+    console.log("点击了跳转操作",e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../items/items?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
+  touchstart: function (e) {
+    //开始触摸时 重置所有删除
+    let data = App.touch._touchstart(e, this.data.list) //将修改过的list setData
+    this.setData({
+      list: data
+    })
+  },
+
+  //滑动事件处理
+  touchmove: function (e) {
+    let data = App.touch._touchmove(e, this.data.list,'_id')//将修改过的list setData
+    this.setData({
+      list: data
+    })
   },
   
 })

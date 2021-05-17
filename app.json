@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/items/items",
     "pages/add/add",
     "pages/SettingPage/settingpage",
     

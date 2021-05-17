@@ -39,8 +39,8 @@
   <view>已建列表</view>
 </view>
 
-<block wx:for="{{list}}">
-    <view class="item" bindtap="seeDetail">
+<!-- <block wx:for="{{list}}">
+    <view class="item" bindtap="seeDetail" data-id="{{item._id}}">
       <image src="{{item.img}}" style="width:75px;height:58px;"></image>
       <view class="desc">
         <view class="title">{{item.taskname}} </view>
@@ -52,7 +52,22 @@
       </view>
     </view>
     <view class="hr2"></view>
-  </block>
+  </block> -->
+
+  <view class="list-page">
+  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}" bindtap="seeDetail" bindtouchstart="touchstart" bindtouchmove="touchmove" data-id="{{item._id}}">
+
+    <view class="item-content">
+      <view class="content-name">{{item.taskname}}</view>
+      <view class="content-info"> 
+        <text>{{item.taskdate}}</text>
+        <!-- <text>{{user.sex}}</text> -->
+      </view>
+    </view>
+
+    <view class="item-delete">删除</view>
+  </view>
+</view>
 
 
 

@@ -1,4 +1,5 @@
 // app.js
+import touch from 'utils/touch.js'
 App({
   onLaunch() {
     
@@ -36,6 +37,7 @@ App({
     userAvatarURL:null,
     settingFastNote:null
   },
+  touch: new touch(),
   onShow(){
     wx.onAppShow((result) => {
       if (this.globalData.settingFastNote){
