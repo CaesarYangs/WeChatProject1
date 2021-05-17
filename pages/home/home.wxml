@@ -55,9 +55,9 @@
   </block> -->
 
   <view class="list-page">
-  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}" bindtap="seeDetail" bindtouchstart="touchstart" bindtouchmove="touchmove" data-id="{{item._id}}">
+  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
 
-    <view class="item-content">
+    <view class="item-content" bindtap="seeDetail" data-id="{{item._id}}">
       <view class="content-name">{{item.taskname}}</view>
       <view class="content-info"> 
         <text>{{item.taskdate}}</text>
@@ -65,8 +65,9 @@
       </view>
     </view>
 
-    <view class="item-delete">删除</view>
+    <view class="item-delete" bindtap="deleteItem">删除</view>
   </view>
+  
 </view>
 
 

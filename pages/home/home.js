@@ -153,5 +153,14 @@ Page({
       list: data
     })
   },
+
+  //删除事项
+  deleteItem:function(){
+    wx.showToast({
+      title: '点击删除',
+      icon:"success",
+      duration:1000
+    })
+  }
   
 })
