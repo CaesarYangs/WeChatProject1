@@ -93,11 +93,20 @@ Page({
 
   },
 
+  Refresh: function(){
+    wx.cloud.database().collection('task2').get() 
+    .then(res=>{
+      console.log("请求成功",res)
+          this.setData({
+            list: res.data
+          })
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.cloud.database().collection('task2')
       wx.cloud.database().collection('task2').get() 
         .then(res=>{
           console.log("请求成功",res)
@@ -155,9 +164,29 @@ Page({
   },
 
   //删除事项
-  deleteItem:function(){
+  deleteItem:function(e){
+    wx.cloud.database().collection('task2')
+    .doc(e.currentTarget.dataset.id)
+    .remove()
+    .then(res=>{
+      this.Refresh()
+      wx.showToast({
+        title: '删除成功',
+        icon:"success",
+        duration:1000
+      })
+    })
+    .catch(res=>{
+      wx.showToast({
+        title: '删除失败',
+        duration:1000
+      })
+    })
+
+  },
+  checkMove:function(){
     wx.showToast({
-      title: '点击删除',
+      title: 'Tap Check',
       icon:"success",
       duration:1000
     })

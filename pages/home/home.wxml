@@ -57,15 +57,18 @@
   <view class="list-page">
   <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
 
-    <view class="item-content" bindtap="seeDetail" data-id="{{item._id}}">
-      <view class="content-name">{{item.taskname}}</view>
-      <view class="content-info"> 
-        <text>{{item.taskdate}}</text>
+    <view class="item-content">
+      <image class="checkbox"style="width: 22px; height: 22px;"src="../assets/Unchecked.png" bindtap="checkMove"></image>
+      <view class="conent"  bindtap="seeDetail" data-id="{{item._id}}">
+        <view class="content-name">{{item.taskname}}</view>
+        <view class="content-info"> 
+        <text>Due: {{item.taskdate}}</text>
         <!-- <text>{{user.sex}}</text> -->
+        </view>
       </view>
     </view>
 
-    <view class="item-delete" bindtap="deleteItem">删除</view>
+    <view class="item-delete" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
   </view>
   
 </view>
