@@ -184,12 +184,51 @@ Page({
     })
 
   },
-  checkMove:function(){
-    wx.showToast({
-      title: 'Tap Check',
-      icon:"success",
-      duration:1000
+  checkMove:function(e){
+    wx.cloud.database().collection('task2')
+    if(e.currentTarget.dataset.done){
+      wx.cloud.database().collection('task2')
+    .doc(e.currentTarget.dataset.id)
+    .update({
+      data:{
+        done:false
+      }
+    
     })
+    .then(res=>{
+      // wx.showToast({
+      //   title: 'Tap Check',
+      //   icon:"success",
+      //   duration:1000
+      // })
+      this.Refresh()
+    })
+    .catch(res=>{
+      console.log("修改失败",res)
+    })
+    }else{
+      wx.cloud.database().collection('task2')
+    .doc(e.currentTarget.dataset.id)
+    .update({
+      data:{
+        done:true
+      }
+    
+    })
+    .then(res=>{
+      // wx.showToast({
+      //   title: 'Tap Check',
+      //   icon:"success",
+      //   duration:1000
+      // })
+      this.Refresh()
+    })
+    .catch(res=>{
+      console.log("修改失败",res)
+    })
+    }
+    
+    
   }
   
 })

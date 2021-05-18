@@ -58,12 +58,27 @@
   <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
 
     <view class="item-content">
-      <image class="checkbox"style="width: 22px; height: 22px;"src="../assets/Unchecked.png" bindtap="checkMove"></image>
+      <view wx:if="{{item.done}}">
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/checked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+      </view>
+      <view wx:else> 
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/Unchecked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+       </view>
+
+      
       <view class="conent"  bindtap="seeDetail" data-id="{{item._id}}">
-        <view class="content-name">{{item.taskname}}</view>
-        <view class="content-info"> 
-        <text>Due: {{item.taskdate}}</text>
+        <view wx:if="{{item.done}}">
+          <view class="content-name-done">{{item.taskname}}</view>
+        </view>
+        <view wx:else>
+          <text>{{item.taskname}}</text>
+        </view>
+        <view wx:if='{{item.taskdate==""}}'> 
         <!-- <text>{{user.sex}}</text> -->
+        </view>
+        <view wx:else>
+          <text class="content-info-done" wx:if="{{item.done}}">Due: {{item.taskdate}}</text>
+          <text class="content-info"wx:else>Due: {{item.taskdate}}</text>
         </view>
       </view>
     </view>

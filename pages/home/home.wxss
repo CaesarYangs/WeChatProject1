@@ -143,8 +143,19 @@
   justify-content: space-between;
   font-size: 27rpx;
 }
+.content-info-done{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 27rpx;
+  text-decoration: line-through;
+}
 .content-name{
   width: 100%;
+}
+.content-name-done{
+  width: 100%;
+  text-decoration: line-through;
 }
 .list-item-touch-active .item-content{
   margin-left: -100rpx;

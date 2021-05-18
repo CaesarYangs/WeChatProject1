@@ -83,7 +83,8 @@ Page({
     .add({
       data:{
         taskname:title,
-        taskdate:date
+        taskdate:date,
+        done:false
       }
     })
     .then(res=>{
