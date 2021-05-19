@@ -74,9 +74,17 @@
   <text class="switch1text">switch</text>
   <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
 </view>
+<view class="switch1">
+  <text class="switch1text" bindtap="showOpenid">显示当前openid</text>
 </view>
-
+</view>
+<view class="switch1">
+  <text class="switch1text" bindtap="test1">建表</text>
+</view>
 <view class="blank"> </view>
+
+
+
 <!-- 关于部分按钮 -->
 <view class="setblock">
 
@@ -119,12 +127,6 @@
     <text>好评鼓励</text>
   </view>
 </view>
-
-
-<view class="list"> 01 </view>
-<view class="list"> 02 </view>
-<view class="list"> 03 </view>
-
 
 
 

@@ -1,5 +1,6 @@
 // pages/add/add.js
 var util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -79,7 +80,7 @@ Page({
     console.log(title)
 
 
-    wx.cloud.database().collection('task2')
+    wx.cloud.database().collection(app.globalData.openid)
     .add({
       data:{
         taskname:title,

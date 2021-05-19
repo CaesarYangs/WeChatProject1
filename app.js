@@ -32,6 +32,7 @@ App({
   },
   globalData: {
     userInfo:{},
+    openid:null,
     userSignature:null,
     userNickName:null,
     userAvatarURL:null,

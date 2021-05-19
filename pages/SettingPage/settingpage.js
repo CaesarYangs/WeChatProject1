@@ -55,6 +55,16 @@ Page({
       switch_settingFastNoteChecked:c
     })
 
+    wx.cloud.callFunction({
+      name: 'getData',
+    })
+    .then(res=>{
+      console.log("云函数请求成功",res)
+      app.globalData.openid = res.result.openid
+    })
+    .catch(res=>{
+      console.log("调用云函数失败",res)
+    })
 
   },
 
@@ -151,5 +161,27 @@ Page({
 
   switch_settingFastNote:function(e){
     app.globalData.settingFastNote = e.detail.value
+  },
+
+  showOpenid:function(){
+    wx.showModal({
+      title: 'Openid',
+      content: app.globalData.openid,
+  })
+  },
+
+  test1:function(){
+    wx.cloud.callFunction({
+      name: 'createCollections',
+      data:{
+        
+      }
+    })
+    .then(res=>{
+      console.log("建表成功",res)
+    })
+    .catch(res=>{
+      console.log("调用云函数失败",res)
+    })
   }
 })
