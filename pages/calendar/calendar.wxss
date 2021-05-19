@@ -1,2 +1,170 @@
 /* pages/calendar/calendar.wxss */
-@import 'calendar-wxa-auto-dark.wxss'
+/* @import 'calendar-wxa-auto-dark.wxss' */
+
+.divLine{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+ }
+
+ .buttongroup1{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+ }
+
+
+/*列表页*/
+.nav{
+  display: flex;
+  flex-direction: row;
+  text-align:center
+}
+.nav-item{
+  width: 25%;
+  margin-top:20px;
+  font-size: 12px;
+}
+.hr{
+  height: 5px;
+  background-color: #cccccc;
+  margin-top: 10px;
+  opacity: 0.2
+}
+.head{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  font-size: 13px;
+  color: #999999
+}
+.right{
+  position: absolute;
+  right: 10px;
+  color: #cccccc
+}
+.hr2{
+  height: 2px;
+  background-color: #cccccc;
+  opacity: 0.2;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+.desc{
+  margin-left: 20px;
+  line-height: 30px;
+}
+.leirong{
+  font-weight: bold;
+}
+.count{
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  color: #999999
+}
+.xinqin{
+  position: absolute;
+  right: 50px;
+}
+.riqi{
+  position: absolute;
+  right: 10px;
+}
+
+
+
+
+
+/* 第二版主界面list显示部件 */
+.list-page{
+  display: flex;
+  flex-direction: column;
+  border-top: 2rpx solid #f0f0f0
+}
+.list-item{
+  height: 160rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f0f0f0;
+  overflow-x:hidden;
+}
+.item-content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  padding: 0 20rpx 0 20rpx;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(180rpx);
+  transform: translateX(180rpx); 
+  /* background-color: #999; */
+  margin-left: -180rpx;
+}
+.checkbox{
+  margin: 5px;
+}
+.content-info{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 27rpx;
+}
+.content-info-done{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 27rpx;
+  text-decoration: line-through;
+}
+.content-name{
+  width: 100%;
+}
+.content-name-done{
+  width: 100%;
+  text-decoration: line-through;
+}
+.list-item-touch-active .item-content{
+  margin-left: -100rpx;
+}
+.list-item-touch-active .item-content, .list-item-touch-active .item-delete {
+  -webkit-transform: translateX(0) !important;
+  transform: translateX(0) !important;
+}
+.item-delete{
+  width: 160rpx;
+  height: 160rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  color: #fff;
+  font-size: 32rpx;
+  -webkit-transform: translateX(180rpx);
+  transform: translateX(180rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.NonSelectImg{
+  width: 200px;
+  height: 200px;
+}
+.NonSelect{
+  display: flex;
+  justify-content:center;
+}
+.NonSelectText{
+  display: flex;
+  justify-content:center;
+}

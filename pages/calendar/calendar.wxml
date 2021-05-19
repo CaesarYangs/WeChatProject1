@@ -1,2 +1,62 @@
 <!--pages/calendar/calendar.wxml-->
-<text>pages/calendar/calendar.wxml</text>
+<calendar 
+  calendarConfig="{{calendarConfig}}"
+/>
+
+<view class="divLine"></view>
+<view class="buttongroup1">
+  <button bindtap="doTap">选择日期</button>
+  <button bindtap="cancelTap">取消选择日期</button>
+</view>
+<view class="divLine"></view>
+
+<view wx:if="{{tap}}">
+  
+  <view class="list-page">
+  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{clist}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
+
+    <view class="item-content">
+      <view wx:if="{{item.done}}">
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/checked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+      </view>
+      <view wx:else> 
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/Unchecked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+       </view>
+
+      
+      <view class="conent"  bindtap="seeDetail" data-id="{{item._id}}">
+        <view wx:if="{{item.done}}">
+          <view class="content-name-done">{{item.taskname}}</view>
+        </view>
+        <view wx:else>
+          <text>{{item.taskname}}</text>
+        </view>
+        <view wx:if='{{item.taskdate==""}}'> 
+        <!-- <text>{{user.sex}}</text> -->
+        </view>
+        <view wx:else>
+          <text class="content-info-done" wx:if="{{item.done}}">Due: {{item.taskdate}}</text>
+          <text class="content-info"wx:else>Due: {{item.taskdate}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="item-delete" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
+  </view>
+  </view>
+</view>
+<view wx:else>
+  <view class="NonSelect">
+    <image class="NonSelectImg" src="../assets/littleperson_1.png" bindtap=""></image>
+  </view>
+  <text class="NonSelectText">还没有选择日期</text>
+  <text class="NonSelectText">（⊙ˍ⊙）</text>
+
+
+  
+  
+  
+
+</view>
+
+

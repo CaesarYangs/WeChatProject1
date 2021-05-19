@@ -35,7 +35,11 @@ App({
     userSignature:null,
     userNickName:null,
     userAvatarURL:null,
-    settingFastNote:null
+    settingFastNote:null,
+    nowSelectedDate:null,
+    nowSelectedMonth:null,
+    nowSelectedYear:null,
+    Date:null,
   },
   touch: new touch(),
   onShow(){

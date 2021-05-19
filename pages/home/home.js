@@ -201,6 +201,7 @@ Page({
       //   icon:"success",
       //   duration:1000
       // })
+      wx.vibrateShort()
       this.Refresh()
     })
     .catch(res=>{
@@ -221,6 +222,7 @@ Page({
       //   icon:"success",
       //   duration:1000
       // })
+      wx.vibrateShort()
       this.Refresh()
     })
     .catch(res=>{

@@ -1,14 +1,15 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/calendar/calendar",
     "pages/items/items",
     "pages/add/add",
     "pages/SettingPage/settingpage",
-    
+    "pages/calendar_comp/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/setting/setting",
-    "pages/calendar/calendar",
+   
     "pages/analysis/analysis"
     
   ],
