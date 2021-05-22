@@ -17,7 +17,7 @@
     "backgroundTextStyle": "dark",
     "backgroundColor":"#F05E1C",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "小小小小小程序",
+    "navigationBarTitleText": "Flowence",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

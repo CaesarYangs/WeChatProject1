@@ -8,6 +8,7 @@ Page({
    */
   data: {
     title:'',
+    taskNote:'',
     inputTaskName: '',
     taskDate:'',
     titleEmpty: true,
@@ -82,14 +83,16 @@ Page({
     
     var title = this.data.title
     var date = this.data.taskDate
+    var note= this.data.taskNote
     console.log(title)
 
 
-    wx.cloud.database().collection(app.globalData.openid)
+    wx.cloud.database().collection('task2')
     .add({
       data:{
         taskname:title,
         taskdate:date,
+        tasknote:note,
         done:false
       }
     })
@@ -118,10 +121,17 @@ Page({
       title: e.detail.value
     })
   },
+  inputTaskNote:function(e){
+    this.setData({
+      taskNote:e.detail.value
+    })
+  },
 
   clearTitle: function () {
     this.setData({
       title: '',
+      taskNote:'',
+      selectTime:0,
       titleEmpty: true
     })
   },
@@ -131,7 +141,6 @@ Page({
       taskDate:''
     })
   },
-
   bindKeyInput: function (e) {
     this.setData({
       //inputTaskName: e.detail.value
@@ -146,16 +155,34 @@ Page({
      })
   },
 
+  bindNone:function(){
+    this.setData({
+      selectTime:0,
+      taskDate:''
+    })
+  },
+
   bindToday:function(){
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    var Y =date.getFullYear();
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
     this.setData({
       selectTime:1,
-      taskDate:""
+      taskDate:Y+'-'+M+'-'+D
     })
   },
   bindTommorow:function(){
+    var timestamp = Date.parse(new Date());
+    var date = new Date(timestamp);
+    var Y =date.getFullYear();
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    ++D;
     this.setData({
       selectTime:2,
-      taskDate:""
+      taskDate:Y+'-'+M+'-'+D
     })
   },
   start:function(){

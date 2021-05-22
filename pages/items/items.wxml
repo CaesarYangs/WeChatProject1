@@ -3,5 +3,12 @@
   <text>任务名: {{task.taskname}}</text>
 </view>
 
+<view>
+  <text>截止日期: {{task.taskdate}}</text>
+</view>
 
-<text>截止日期: {{task.taskdate}}</text>
+<view>
+  <text>备注: {{task.tasknote}}</text>
+</view>
+
+

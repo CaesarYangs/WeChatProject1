@@ -30,7 +30,7 @@
   content: "";
   display: block;
   height: 8rpx;
-  width: 90rpx;
+  width: 70rpx;
   background: #F05E1C;
   position: absolute; 
   bottom: 0;
@@ -47,8 +47,11 @@
 .weui-input{
   border: solid;
   border-radius: 16rpx;
-  margin: 10px;
-  font-size: 20px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 .sectiondate{
   display: flex;
@@ -59,4 +62,37 @@
 .blank1{
   margin-left: 20px;
   margin-right: 20px;
+}
+.blank2{
+  margin-top: 20px;
+}
+.sec1{
+  font-size: 13px;
+  margin-left: 10px;
+  color: #919090;
+}
+.datesec{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+
+}
+.sec2{
+  font-size: 12px;
+  margin-top: 5px;
+}
+.pickdate{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  border-width: thin;
+  margin-inline: 50px;
+  margin-bottom: 10px;
+  border-radius: 20rpx;
+}
+.btn1{
+  background-color:#EB7E4C;
+  color: white;
 }

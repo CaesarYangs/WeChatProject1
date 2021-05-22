@@ -72,7 +72,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.cloud.database().collection('task2').get() 
+    wx.cloud.database().collection('task2')
+    .where({
+      _openid:app.globalData.openid
+    })
+    .get() 
         .then(res=>{
           console.log("请求成功",res)
           this.setData({
@@ -143,6 +147,7 @@ Page({
   getData:function(){
     wx.cloud.database().collection('task2')
     .where({
+      _openid:app.globalData.openid,
       taskdate:app.globalData.Date
     })
     .get()
@@ -244,7 +249,8 @@ Page({
   Refresh: function(){
     wx.cloud.database().collection('task2')
     .where({
-      taskdate:app.globalData.Date
+      taskdate:app.globalData.Date,
+      _openid:App.globalData.openid
     })
     .get()
     .then(res=>{

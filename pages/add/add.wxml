@@ -27,32 +27,56 @@
                 <block wx:for="{{[1]}}" wx:key="*this">
                     <view class="item-ans">
                         <view>
-                          <text>添加任务</text>
+                          <view class="blank2"> </view>
+                          <view class="blank2"> </view>
+                          <text class="sec1">添加任务：</text>
 
                           <input class="weui-input" auto-focus placeholder =" 任务名称" value='{{title}}'bindinput="inputTitle"/>
+                          <view class="blank2"> </view>
+                          <text class="sec1">备注：</text>
+                          <input class="weui-input" auto-focus placeholder =" 备注" value='{{taskNote}}'bindinput="inputTaskNote"/>
+                          <view class="blank2"> </view>
                           <text class="sec1">选择时间：</text>
                           <view class="sectiondate">
-                            <image wx:if="{{selectTime==1}}" style="width: 50px; height: 50px;"src="../assets/add/donut_large-1.png" bindtap="bindToday"></image>
-                            <image wx:else style="width: 50px; height: 50px;"src="../assets/add/donut_large.png" bindtap="bindToday"></image>
+                            <view class="datesec">
+                              <image wx:if="{{selectTime==0}}" style="width: 40px; height: 40px;"src="../assets/add/notifications_off-1.png" bindtap="bindNone"></image>
+                              <image wx:else style="width: 40px; height: 40px;"src="../assets/add/notifications_off.png" bindtap="bindNone"></image>
+                              <text class="sec2">无日期</text>
+                            </view>
                             <view class="blank1"> </view>
-                            <image wx:if="{{selectTime==2}}" style="width: 50px; height: 50px;"src="../assets/add/toll-1.png" bindtap="bindTommorow"></image>
-                            <image wx:else style="width: 50px; height: 50px;"src="../assets/add/toll.png" bindtap="bindTommorow"></image>
-
+                            <view class="datesec">
+                              <image wx:if="{{selectTime==1}}" style="width: 40px; height: 40px;"src="../assets/add/donut_large-1.png" bindtap="bindToday"></image>
+                              <image wx:else style="width: 40px; height: 40px;"src="../assets/add/donut_large.png" bindtap="bindToday"></image>
+                              <text class="sec2">今天</text>
+                            </view>
+                            
                             <view class="blank1"> </view>
+                            <view class="datesec">
+                              <image wx:if="{{selectTime==2}}" style="width: 40px; height: 40px;"src="../assets/add/toll-1.png" bindtap="bindTommorow"></image>
+                              <image wx:else style="width: 40px; height: 40px;"src="../assets/add/toll.png" bindtap="bindTommorow"></image>
+                              <text class="sec2">明天</text>
+                            </view>
+                        
+                            <view class="blank1"> </view>
+                            <view class="datesec">
                               <picker mode="date" value="{{date}}" start="{{systemdate}}"  bindchange="bindDateChange">
                                 <view class="picker">
-                                  <image wx:if="{{selectTime==3}}" style="width: 50px; height: 50px;"src="../assets/add/watch_later-1.png"></image>
-                                  <image wx:else style="width: 50px; height: 50px;"src="../assets/add/watch_later.png"></image>
-                                  
+                                  <image wx:if="{{selectTime==3}}" style="width: 40px; height: 40px;"src="../assets/add/watch_later-1.png"></image>
+                                  <image wx:else style="width: 40px; height: 40px;"src="../assets/add/watch_later.png"></image>
                                 </view>
+                                <text>选择日期</text>
                               </picker>
-                          </view>
-                          <view class="pickdate">
-                            {{taskDate}}
+                              
+                            </view>
+                              
                           </view>
 
-                            <button bindtap="addTask">添加任务</button>
-                        </view>
+                          <view class="blank2"> </view>
+                            <view wx:if="{{selectTime!=0}}" class="pickdate">
+                              任务日期：{{taskDate}}
+                            </view>
+                            <button class= "btn1" bindtap="addTask">添加任务</button>
+                          </view>
                     </view>
                 </block>
             </scroll-view>
