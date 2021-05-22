@@ -15,6 +15,7 @@ Page({
     currentTab:1, //预设当前项的值
     scrollLeft:0, //tab标题的滚动条位置
     ani:null,
+    selectTime:0,
   },
 
   /**
@@ -140,8 +141,22 @@ Page({
 
   bindDateChange:function(e){
     this.setData({
-      taskDate: e.detail.value
+      taskDate: e.detail.value,
+      selectTime:3
      })
+  },
+
+  bindToday:function(){
+    this.setData({
+      selectTime:1,
+      taskDate:""
+    })
+  },
+  bindTommorow:function(){
+    this.setData({
+      selectTime:2,
+      taskDate:""
+    })
   },
   start:function(){
     var animation = wx.createAnimation({

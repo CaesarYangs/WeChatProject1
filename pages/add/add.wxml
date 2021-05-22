@@ -15,7 +15,7 @@
                     <view class="item-ans">
                         <view>
                           <text>添加随记</text>
-                          <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+                          <input class="weui-input" auto-focus placeholder =" 写下你的flow" value='{{title}}'bindinput="inputTitle"/>
                         </view>
                     </view>
                 </block>
@@ -29,16 +29,26 @@
                         <view>
                           <text>添加任务</text>
 
-                          <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+                          <input class="weui-input" auto-focus placeholder =" 任务名称" value='{{title}}'bindinput="inputTitle"/>
                           <text class="sec1">选择时间：</text>
                           <view class="sectiondate">
-                            
+                            <image wx:if="{{selectTime==1}}" style="width: 50px; height: 50px;"src="../assets/add/donut_large-1.png" bindtap="bindToday"></image>
+                            <image wx:else style="width: 50px; height: 50px;"src="../assets/add/donut_large.png" bindtap="bindToday"></image>
+                            <view class="blank1"> </view>
+                            <image wx:if="{{selectTime==2}}" style="width: 50px; height: 50px;"src="../assets/add/toll-1.png" bindtap="bindTommorow"></image>
+                            <image wx:else style="width: 50px; height: 50px;"src="../assets/add/toll.png" bindtap="bindTommorow"></image>
+
+                            <view class="blank1"> </view>
                               <picker mode="date" value="{{date}}" start="{{systemdate}}"  bindchange="bindDateChange">
                                 <view class="picker">
-                                  <image style="width: 80px; height: 80px;"src="../assets/settingicon/PaperPlaneTilt.png"></image>
-                                  {{taskDate}}
+                                  <image wx:if="{{selectTime==3}}" style="width: 50px; height: 50px;"src="../assets/add/watch_later-1.png"></image>
+                                  <image wx:else style="width: 50px; height: 50px;"src="../assets/add/watch_later.png"></image>
+                                  
                                 </view>
                               </picker>
+                          </view>
+                          <view class="pickdate">
+                            {{taskDate}}
                           </view>
 
                             <button bindtap="addTask">添加任务</button>
