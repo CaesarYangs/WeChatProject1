@@ -10,7 +10,11 @@ Page({
     title:'',
     inputTaskName: '',
     taskDate:'',
-    titleEmpty: true
+    titleEmpty: true,
+    winHeight:"",//窗口高度
+    currentTab:1, //预设当前项的值
+    scrollLeft:0, //tab标题的滚动条位置
+    ani:null,
   },
 
   /**
@@ -138,6 +142,64 @@ Page({
     this.setData({
       taskDate: e.detail.value
      })
+  },
+  start:function(){
+    var animation = wx.createAnimation({
+      duration: 2000,
+        delay: 0,
+        timingFunction: "linear",
+    });
+    animation.translate($width, 0).rotate($deg);
+    animation.step();
+    this.setData({
+      ani:  animation.export()
+    })
+  },
+   // 滚动切换标签样式
+   switchTab:function(e){
+    this.setData({
+        currentTab:e.detail.current
+    });
+    this.checkCor();
+},
+// 点击标题切换当前页时改变样式
+swichNav:function(e){
+    var cur=e.target.dataset.current;
+    if(this.data.currentTaB==cur){return false;}
+    else{
+        this.setData({
+            currentTab:cur
+        })
+    }
+},
+//判断当前滚动超过一屏时，设置tab标题滚动条。
+checkCor:function(){
+  if (this.data.currentTab>4){
+    this.setData({
+      scrollLeft:300
+    })
+  }else{
+    this.setData({
+      scrollLeft:0
+    })
   }
+},
+onLoad: function() {  
+    var that = this; 
+    //  高度自适应
+    wx.getSystemInfo( {  
+        success: function( res ) {  
+            var clientHeight=res.windowHeight,
+                clientWidth=res.windowWidth,
+                rpxR=750/clientWidth;
+          var  calc=clientHeight*rpxR-180;
+            console.log(calc)
+            that.setData( {  
+                winHeight: calc  
+            });  
+        }  
+    });
+},  
+footerTap:app.footerTap
 
 })

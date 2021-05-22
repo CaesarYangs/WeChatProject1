@@ -15,7 +15,7 @@ Page({
       inverse: true, // 单选模式下是否支持取消选中,
       chooseAreaMode: false, // 开启日期范围选择模式，该模式下只可选择时间段
       markToday: '今', // 当天日期展示不使用默认数字，用特殊文字标记
-      // defaultDay: '2018-3-6', // 默认选中指定某天；当为 boolean 值 true 时则默认选中当天，非真值则在初始化时不自动选中日期，
+      defaultDay: true, // 默认选中指定某天；当为 boolean 值 true 时则默认选中当天，非真值则在初始化时不自动选中日期，
       highlightToday: true, // 是否高亮显示当天，区别于选中样式（初始化时当天高亮并不代表已选中当天）
       takeoverTap: false, // 是否完全接管日期点击事件（日期不会选中），配合 onTapDay() 使用
       preventSwipe: false, // 是否禁用日历滑动切换月份

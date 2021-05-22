@@ -1,18 +1,57 @@
 <!--pages/add/add.wxml-->
 <view>
 
-  <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
-<view class="sectiondate">
-  <!-- <view class="section__title">日期选择</view> -->
-    <picker mode="date" value="{{date}}" start="{{systemdate}}"  bindchange="bindDateChange">
-      <view class="picker">
-        <image style="width: 80px; height: 80px;"src="../assets/settingicon/PaperPlaneTilt.png"></image>
-        {{taskDate}}
-      </view>
-    </picker>
- </view>
+  <view >
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}" >
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">随记</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">任务</view>
+    </scroll-view>
 
-  <button bindtap="addTask">添加任务</button>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx" animation="{{ani}}">
+        <swiper-item wx:for="{{[0]}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{[0]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <view>
+                          <text>添加随记</text>
+                          <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            
+        </swiper-item>
+        <swiper-item wx:for="{{[1]}}">
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{[1]}}" wx:key="*this">
+                    <view class="item-ans">
+                        <view>
+                          <text>添加任务</text>
+
+                          <input class="weui-input" auto-focus placeholder ="任务名称" value='{{title}}'bindinput="inputTitle"/>
+                          <text class="sec1">选择时间：</text>
+                          <view class="sectiondate">
+                            
+                              <picker mode="date" value="{{date}}" start="{{systemdate}}"  bindchange="bindDateChange">
+                                <view class="picker">
+                                  <image style="width: 80px; height: 80px;"src="../assets/settingicon/PaperPlaneTilt.png"></image>
+                                  {{taskDate}}
+                                </view>
+                              </picker>
+                          </view>
+
+                            <button bindtap="addTask">添加任务</button>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+            
+        </swiper-item>
+    </swiper>
+</view>
+
+
 
 
 </view>
