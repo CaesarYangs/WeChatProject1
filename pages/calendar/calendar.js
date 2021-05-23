@@ -163,17 +163,17 @@ Page({
   },
   touchstart: function (e) {
     //开始触摸时 重置所有删除
-    let data = App.touch._touchstart(e, this.data.list) //将修改过的list setData
+    let data = app.touch._touchstart(e, this.data.clist) //将修改过的list setData
     this.setData({
-      list: data
+      clist: data
     })
   },
 
   //滑动事件处理
   touchmove: function (e) {
-    let data = App.touch._touchmove(e, this.data.list,'_id')//将修改过的list setData
+    let data = app.touch._touchmove(e, this.data.clist,'_id')//将修改过的list setData
     this.setData({
-      list: data
+      clist: data
     })
   },
 
@@ -250,7 +250,7 @@ Page({
     wx.cloud.database().collection('task2')
     .where({
       taskdate:app.globalData.Date,
-      _openid:App.globalData.openid
+      _openid:app.globalData.openid
     })
     .get()
     .then(res=>{
@@ -263,7 +263,11 @@ Page({
       console.log("请求失败",err)
     })
   },
-  
-  
+  seeDetail:function(e){
+    console.log("点击了跳转操作",e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../items/items?id=' + e.currentTarget.dataset.id,
+    })
+  },
 
 })

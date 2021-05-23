@@ -14,8 +14,20 @@
                 <block wx:for="{{[0]}}" wx:key="*this">
                     <view class="item-ans">
                         <view>
-                          <text>添加随记</text>
-                          <input class="weui-input" auto-focus placeholder =" 写下你的flow" value='{{title}}'bindinput="inputTitle"/>
+                          <view class="blank2"> </view>
+                          <view class="blank2"> </view>
+                          <text class="sec1">添加随记</text>
+                          <!-- <input class="weui-inputflow" auto-focus placeholder =" 写下你的flow" value='{{flowtitle}}'bindinput="inputflowTitle"/> -->
+                          <view class="weui-inputflow">
+                            <textarea value='{{flowtitle}}' bindinput="inputFlow" placeholder="写下Flow" auto-focus></textarea>
+                          </view>
+              
+                          <view class="blank2"> </view>
+                          <input class="weui-input" auto-focus placeholder =" #标签" value='{{flowmark}}'bindinput="inputflowMark"/>
+                          <view class="blank2"> </view>
+                          <view class="blank2"> </view>
+                          <view class="blank2"> </view>
+                          <button class= "btn2" bindtap="addFlow">添加flow</button>
                         </view>
                     </view>
                 </block>

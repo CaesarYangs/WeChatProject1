@@ -11,8 +11,16 @@
 <view class="divLine"></view>
 
 <view wx:if="{{tap}}">
-  
-  <view class="list-page">
+  <view wx:if="{{clist==''}}">
+    <view class="NonSelect">
+    <image class="NonSelectImg" src="../assets/littleperson_1.png" bindtap=""></image>
+  </view>
+    <text class="NonSelectText">当天没有任务</text>
+    <text class="NonSelectText">ヽ(✿ﾟ▽ﾟ)ノ</text>
+  </view>
+
+
+  <view wx:else class="list-page">
   <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{clist}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
 
     <view class="item-content">

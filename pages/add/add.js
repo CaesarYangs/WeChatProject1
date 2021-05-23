@@ -17,6 +17,8 @@ Page({
     scrollLeft:0, //tab标题的滚动条位置
     ani:null,
     selectTime:0,
+    flowtitle:'',
+    flowmark:'',
   },
 
   /**
@@ -136,6 +138,13 @@ Page({
     })
   },
 
+  clearFlow:function(){
+    this.setData({
+      flowtitle:'',
+      flowmark:''
+    })
+  },
+
   clearDate:function(){
     this.setData({
       taskDate:''
@@ -197,6 +206,44 @@ Page({
       ani:  animation.export()
     })
   },
+  inputFlow:function(e){
+    this.setData({
+      flowtitle: e.detail.value
+    })
+  },
+  inputflowMark:function(e){
+    this.setData({
+      flowmark:e.detail.value
+    })
+  },
+  addFlow:function(){
+    var fflow = this.data.flowtitle
+    var fmark = this.data.flowmark
+
+    wx.cloud.database().collection('flow')
+    .add({
+      data:{
+        flow:fflow,
+        mark:'#'+fmark
+      }
+    })
+    .then(res=>{
+        console.log('添加成功',res)
+        wx.showToast({
+          title: '添加成功',
+          icon:"success"
+        })
+        this.clearFlow()
+    })
+    .catch(res=>{
+      console.log('添加失败',res)
+      wx.showToast({
+        title: '添加失败 请重试',
+        icon:"loading"
+      })
+    })
+  },
+
    // 滚动切换标签样式
    switchTab:function(e){
     this.setData({

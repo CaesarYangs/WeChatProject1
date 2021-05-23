@@ -9,7 +9,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/setting/setting",
-   
+    "pages/flow/flow",
     "pages/analysis/analysis"
     
   ],
@@ -46,7 +46,7 @@
       
     },
     {
-      "pagePath": "pages/analysis/analysis",
+      "pagePath": "pages/flow/flow",
       "iconPath": "pages/assets/tabbar icons/search-line.png",
       "selectedIconPath": "pages/assets/tabbar icons/search-line-1.png"
       

@@ -1,0 +1,19 @@
+<!--pages/flow/flow.wxml-->
+<view wx:if="{{nlist==''}}" class="NonSelect">
+  <image class="NonSelectImg" src="../assets/no.png"></image>
+  <text class="NonSelectText">还没有flow</text>
+</view>
+  <view wx:else class="list-page">
+  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{nlist}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
+
+    <view class="item-content">
+      
+      <view class="conent"  bindtap="seeDetail" data-id="{{item._id}}">
+          <text>{{item.flow}}</text>
+      </view>
+    </view>
+
+    <view class="item-delete" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
+  </view>
+  
+</view>

@@ -53,8 +53,11 @@
     </view>
     <view class="hr2"></view>
   </block> -->
-
-  <view class="list-page">
+<view wx:if="{{list==''}}" class="NonSelect">
+  <image class="NonSelectImg" src="../assets/no.png"></image>
+  <text class="NonSelectText">还没有任务</text>
+</view>
+  <view wx:else class="list-page">
   <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
 
     <view class="item-content">
