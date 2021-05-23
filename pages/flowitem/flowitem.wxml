@@ -1,0 +1,8 @@
+<!--pages/flowitem/flowitem.wxml-->
+<view>
+  <text>Flow: {{flows.flow}}</text>
+</view>
+
+<view>
+  <text>mark: {{flows.mark}}</text>
+</view>

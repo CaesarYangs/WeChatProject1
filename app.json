@@ -10,12 +10,12 @@
     "pages/logs/logs",
     "pages/setting/setting",
     "pages/flow/flow",
-    "pages/analysis/analysis"
-    
+    "pages/analysis/analysis",
+    "pages/flowitem/flowitem"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor":"#F05E1C",
+    "backgroundColor": "#F05E1C",
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "Flowence",
     "navigationBarTextStyle": "black",
@@ -28,36 +28,32 @@
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
     "selectedColor": "#F69C21",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "iconPath": "pages/assets/tabbar icons/home-3-line.png",
-      "selectedIconPath": "pages/assets/tabbar icons/home-3-line-1.png"
-    },
-    {
-      "pagePath": "pages/calendar/calendar",
-      "iconPath": "pages/assets/tabbar icons/Calendar.png",
-      "selectedIconPath": "pages/assets/tabbar icons/Calendar-1.png"
-      
-    },
-    {
-      "pagePath": "pages/add/add",
-      "iconPath": "pages/assets/tabbar icons/Plus.png",
-      "selectedIconPath": "pages/assets/tabbar icons/Plus-1.png"
-      
-    },
-    {
-      "pagePath": "pages/flow/flow",
-      "iconPath": "pages/assets/tabbar icons/search-line.png",
-      "selectedIconPath": "pages/assets/tabbar icons/search-line-1.png"
-      
-    },
-    {
-      "pagePath": "pages/SettingPage/settingpage",
-      "iconPath": "pages/assets/tabbar icons/settings-line.png",
-      "selectedIconPath": "pages/assets/tabbar icons/settings-line-1.png"
-    
-    }
-
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "pages/assets/tabbar icons/home-3-line.png",
+        "selectedIconPath": "pages/assets/tabbar icons/home-3-line-1.png"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "iconPath": "pages/assets/tabbar icons/Calendar.png",
+        "selectedIconPath": "pages/assets/tabbar icons/Calendar-1.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "iconPath": "pages/assets/tabbar icons/Plus.png",
+        "selectedIconPath": "pages/assets/tabbar icons/Plus-1.png"
+      },
+      {
+        "pagePath": "pages/flow/flow",
+        "iconPath": "pages/assets/flow/fl.png",
+        "selectedIconPath": "pages/assets/flow/fl-1.png"
+      },
+      {
+        "pagePath": "pages/SettingPage/settingpage",
+        "iconPath": "pages/assets/tabbar icons/settings-line.png",
+        "selectedIconPath": "pages/assets/tabbar icons/settings-line-1.png"
+      }
     ]
   }
 }

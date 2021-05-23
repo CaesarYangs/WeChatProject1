@@ -117,7 +117,7 @@ Page({
   seeDetail:function(e){
     console.log("点击了跳转操作",e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '../items/items?id=' + e.currentTarget.dataset.id,
+      url: '../flowitem/flowitem?id=' + e.currentTarget.dataset.id,
     })
   },
 

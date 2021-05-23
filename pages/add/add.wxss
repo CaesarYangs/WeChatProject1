@@ -99,6 +99,7 @@
 .btn2{
   /* background-color:#EB7E4C; */
   border: solid;
+  border-width: thin;
   color: #EB7E4C;
 }
 .weui-inputflow{
