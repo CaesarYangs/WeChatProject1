@@ -41,6 +41,7 @@ App({
     nowSelectedMonth:null,
     nowSelectedYear:null,
     Date:null,
+    settingFlowShow:false,
   },
   touch: new touch(),
   onShow(){

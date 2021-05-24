@@ -66,13 +66,13 @@
 </view>
 
 <view class="switch1">
-  <text class="switch1text">switch 3</text>
-  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+  <text class="switch1text">flow模式是否显示全部内容</text>
+  <switch checked="{{switch_settingFlowShow}}" bindchange="switch3Change" color="#F05E1C"/>
 </view>
 
 <view class="switch1">
   <text class="switch1text">switch</text>
-  <switch checked="{{switch2Checked}}" bindchange="switch1Change" color="#F05E1C"/>
+  <switch checked="{{switch4Checked}}" bindchange="switch1Change" color="#F05E1C"/>
 </view>
 <view class="switch1">
   <text class="switch1text" bindtap="showOpenid">显示当前openid</text>

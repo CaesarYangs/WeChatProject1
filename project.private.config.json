@@ -23,6 +23,12 @@
           "pathName": "pages/add/add",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/flow/flow",
+          "pathName": "pages/flow/flow",
+          "query": "",
+          "scene": null
         }
       ]
     }

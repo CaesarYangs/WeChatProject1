@@ -7,6 +7,8 @@ Page({
    */
   data: {
     nlist:[],
+    actionSheetHidden: true,
+    showAll:false,
   },
 
   /**
@@ -56,7 +58,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      showAll:App.globalData.settingFlowShow
+    })
+    console.log('showall:'+this.showAll)
+    this.onLoad()
   },
 
   /**
@@ -156,6 +162,50 @@ Page({
         duration:1000
       })
     })
-
+    this.setData({
+      actionSheetHidden: true,
+    })
   },
+  actionSheet: function() {
+    wx.showActionSheet({
+      itemList:["分享","删除","编辑"],
+      success (res) {
+        console.log(res.tapIndex)
+      },
+      fail (res) {
+        console.log(res.errMsg)
+      }
+    })
+    
+},
+
+data:{
+  actionSheetHidden: true,
+  actionSheetItems: ['item1', 'item2', 'item3', 'item4']
+},
+actionSheetTap: function(e) {
+  this.setData({
+    actionSheetHidden: !this.data.actionSheetHidden
+  })
+},
+actionSheetChange: function(e) {
+  this.setData({
+    actionSheetHidden: !this.data.actionSheetHidden
+  })
+},
+bindItemTap:function(e){
+  console.log('tap ' + e.currentTarget.dataset.name)
+},
+listenerButton: function() {
+  this.setData({
+    actionSheetHidden: !this.data.actionSheetHidden
+  });
+},
+listenerActionSheet: function() {
+
+  this.setData({
+    actionSheetHidden: !this.data.actionSheetHidden,
+  })
+},
+
 })

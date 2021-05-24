@@ -1,6 +1,6 @@
 /* pages/SettingPage/settingpage.wxss */
 page{
-  background-color: #F2F1F6
+  background-color: #FAFAFA
 }
 
 .user{

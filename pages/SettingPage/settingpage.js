@@ -15,7 +15,8 @@ Page({
     switch_settingFastNoteChecked:false,
     nn:null,
     showauth:true,
-    switch1Checked: false
+    switch1Checked: false,
+    switch3Checked: false,
 
   },
 
@@ -162,6 +163,9 @@ Page({
   switch_settingFastNote:function(e){
     app.globalData.settingFastNote = e.detail.value
   },
+  switch_settingFlowShow:function(e){
+    app.globalData.settingFlowShow = e.detail.value
+  },
 
   showOpenid:function(){
     wx.showModal({
@@ -183,5 +187,9 @@ Page({
     .catch(res=>{
       console.log("调用云函数失败",res)
     })
+  },
+  switch3Change:function(){
+    app.globalData.settingFlowShow = !app.globalData.settingFlowShow;
+    console.log(app.globalData.settingFlowShow)
   }
 })

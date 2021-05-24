@@ -219,10 +219,12 @@ Page({
   addFlow:function(){
     var fflow = this.data.flowtitle
     var fmark = this.data.flowmark
+    var time = util.formatTime(new Date());
 
     wx.cloud.database().collection('flow')
     .add({
       data:{
+        time:time,
         flow:fflow,
         mark:'#'+fmark
       }
