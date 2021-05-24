@@ -5,7 +5,7 @@
 </view>
   <view wx:else class="list-page">
     <view class="btn1">
-      <button class="wanderbutton">
+      <button class="wanderbutton" bindtap="wandering">
         <image class='btnImg' style="width: 18px; height: 18px;" src='../assets/HashStraight.png'></image>
         <view>标签漫步</view>
       </button>

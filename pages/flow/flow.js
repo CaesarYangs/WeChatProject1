@@ -207,5 +207,10 @@ listenerActionSheet: function() {
     actionSheetHidden: !this.data.actionSheetHidden,
   })
 },
+wandering:function(){
+  wx.navigateTo({
+    url: '../marks/marks',
+  })
+}
 
 })
