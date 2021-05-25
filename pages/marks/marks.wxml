@@ -1,9 +1,8 @@
 <view wx:if="{{nlist==''}}">
 
 </view>
-<view wx:else class="list-page">
-  <button bindtap="test">hello</button>
-  <view  wx:for="{{nlist}}">
-    <text>{{item.mark}}</text>
+<view wx:else class="list-page">  
+  <view class="marks" wx:for="{{marklist}}">
+    <text class="markitem" bindtap="seeMark" data-markname="{{item}}">{{item}}</text>
   </view>
 </view>

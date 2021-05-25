@@ -1,5 +1,5 @@
-// pages/flow/flow.js
-const App = getApp()
+// pages/markDetail/markDetail.js
+var app = getApp()
 Page({
 
   /**
@@ -8,47 +8,33 @@ Page({
   data: {
     nlist:[],
     actionSheetHidden: true,
-    showAll:false,
-    total:null,
+    thismark:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.database().collection('flow')
+      var mark = options.markname;
       wx.cloud.database().collection('flow')
       .where({
-        _openid:App.globalData.openid
+        _openid:app.globalData.openid,
+        mark:mark
       })
       .get() 
         .then(res=>{
           console.log("请求成功",res)
           this.setData({
             nlist: res.data,
+            thismark:mark
           })
           App.globalData.totalflow = res.total
         })
         .catch(err=>{
           console.log("请求成功",err)
         })
-  },
-  Refresh: function(){
-    wx.cloud.database().collection('flow')
-    .where({
-      _openid:App.globalData.openid
-    })
-    .get() 
-    .then(res=>{
-      console.log("请求成功",res)
-          this.setData({
-            nlist: res.data
-          })
-          this.loadmark()
-    })
-  },
 
-  
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -61,11 +47,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      showAll:App.globalData.settingFlowShow
-    })
-    console.log('showall:'+this.showAll)
-    this.onLoad()
+
   },
 
   /**
@@ -86,28 +68,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.cloud.database().collection('flow')
-      .where({
-        _openid:App.globalData.openid
-      })
-      .get() 
-        .then(res=>{
-          console.log("请求成功",res)
-          this.setData({
-            nlist: res.data
-          })
-          wx.stopPullDownRefresh();
-          
-          wx.showToast({
-            title: '刷新成功',
-            icon:"success",
-            duration: 1000
-          })
-        })
-        .catch(err=>{
-          console.log("请求成功",err)
-        })
-        this.loadmark()
+    this.Refresh()
   },
 
   /**
@@ -117,38 +78,43 @@ Page({
 
   },
 
+  Refresh: function(){
+    var that = this
+    var mark = that.data.thismark;
+    console.log(mark)
+    wx.cloud.database().collection('flow')
+    .where({
+      _openid:app.globalData.openid,
+      mark:mark
+    })
+    .get() 
+    .then(res=>{
+      console.log("请求成功",res)
+          this.setData({
+            nlist: res.data
+          })
+          wx.stopPullDownRefresh();
+          wx.showToast({
+            title: '刷新成功',
+            icon:"success",
+            duration:1000
+          })
+    })
+  },
+
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   },
-
-  //跳转到商品详情页
   seeDetail:function(e){
     console.log("点击了跳转操作",e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../flowitem/flowitem?id=' + e.currentTarget.dataset.id,
     })
   },
-
-  touchstart: function (e) {
-    //开始触摸时 重置所有删除
-    let data = App.touch._touchstart(e, this.data.nlist) //将修改过的list setData
-    this.setData({
-      nlist: data
-    })
-  },
-
-  //滑动事件处理
-  touchmove: function (e) {
-    let data = App.touch._touchmove(e, this.data.nlist,'_id')//将修改过的list setData
-    this.setData({
-      nlist: data
-    })
-  },
-
-  //删除事项
   deleteItem:function(e){
     wx.cloud.database().collection('flow')
     .doc(e.currentTarget.dataset.id)
@@ -171,7 +137,6 @@ Page({
       actionSheetHidden: true,
     })
   },
- 
 
 actionSheetTap: function(e) {
   this.setData({
@@ -197,36 +162,4 @@ listenerActionSheet: function() {
     actionSheetHidden: !this.data.actionSheetHidden,
   })
 },
-wandering:function(){
-  this.Refresh()
-  this.loadmark()
-  wx.navigateTo({
-    url: '../marks/marks',
-  })
-},
-
-loadmark:function(){
-  var that = this;
-  var newlist=[];
-  // var marklist=[]
-  for (var i = 0; i <that.data.nlist.length; i++) { //集合中数据的条数
-    newlist[i] = that.data.nlist[i].mark //将查询结果中想要的数据挑选出来
-  }
-  var m=true;
-  for(var i=0;i<that.data.nlist.length; i++){
-    for(var j=0;j<App.globalData.marklist.length; j++){
-      if(App.globalData.marklist[j]==newlist[i]){
-        m=false;
-        break;
-      }else{
-        m=true;
-      }
-    }
-    if(m){
-      App.globalData.marklist.push(newlist[i])
-    }
-  }
-  console.log(App.globalData.marklist)
-},
-
 })

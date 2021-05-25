@@ -1,0 +1,53 @@
+<!--pages/flow/flow.wxml-->
+<view wx:if="{{nlist==''}}" class="NonSelect">
+  <image class="NonSelectImg" src="../assets/no.png"></image>
+  <text class="NonSelectText">还没有flow</text>
+</view>
+  <view wx:else class="list-page">
+
+    <view class="blank2"> </view>
+    <view  wx:for="{{nlist}}">
+      <view class="1">
+      <view class="item-content" >
+        <view class="flowtop">
+          <text>{{item.time}}</text>
+          <image style="width: 20px; height: 20px;"src="../assets/more_horiz.png" bindtap='listenerActionSheet' data-id="{{item._id}}"></image>
+          <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" wx:for-index="idx">
+            <action-sheet-item>
+                  <button class="share" open-type="share">     分享给微信好友     </button>
+            </action-sheet-item>
+            <action-sheet-item>
+                  <view class="sheetbtn" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
+            </action-sheet-item>
+            <action-sheet-item>
+                  <view class="sheetbtn"> 编辑</view>
+            </action-sheet-item>
+
+
+            <action-sheet-cancel class="sheetbtncancel">取消</action-sheet-cancel>
+            </action-sheet>
+
+          
+        </view>
+        <view class="blank1"> </view>
+        <view>
+          <text class="flowmark">{{item.mark}}</text>
+        </view>
+
+        <view wx:if="{{showAll}}"  class="content"  bindtap="seeDetail" data-id="{{item._id}}">
+          <text>{{item.flow}}</text>
+        </view>
+        <view wx:else class="content-hide"  bindtap="seeDetail" data-id="{{item._id}}">
+          <text>{{item.flow}}</text>
+        </view>
+        
+      </view>
+      <view class="blank2"> </view>
+    </view>
+
+    
+
+    <!-- <view class="item-delete" bindtap="deleteItem" data-id="{{item._id}}">删除</view> -->
+  </view>
+  
+</view>

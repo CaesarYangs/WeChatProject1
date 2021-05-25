@@ -1,1 +1,31 @@
 /* pages/marks/marks.wxss */
+.list-page{
+  /* display: flex; */
+  flex-direction: row;
+  /* justify-content: space-between;  */
+  align-items:center;
+  white-space:pre-wrap;
+}
+
+.marks{
+  display:inline-block;
+  flex-direction: row;
+  /* align-items:center; */
+  /* justify-content: center; */
+}
+.markitem{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border: solid;
+  margin: 15px;
+  height: 80rpx;
+  width: 250rpx;
+  align-items:center;
+  justify-content: center;
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  border-width: thin;
+  color: #F05E1C;
+  border-color: #CFCFCF;
+}

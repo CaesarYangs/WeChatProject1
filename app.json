@@ -5,6 +5,7 @@
     "pages/items/items",
     "pages/add/add",
     "pages/marks/marks",
+    "pages/markDetail/markDetail",
     "pages/SettingPage/settingpage",
     "pages/calendar_comp/index",
     "pages/index/index",

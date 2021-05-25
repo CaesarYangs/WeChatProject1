@@ -41,6 +41,7 @@ App({
     nowSelectedYear:null,
     Date:null,
     settingFlowShow:false,
+    marklist:[],
   },
   touch: new touch(),
   onShow(){
