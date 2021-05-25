@@ -1,4 +1,11 @@
-<!--pages/flow/flow.wxml-->
+<!--pages/markSearch/markSearch.wxml-->
+<view class="searchblock">
+  <input class="weui-input" auto-focus placeholder ="搜索" value='{{searchtitle}}'bindinput="inputTitle"/>
+  <button class= "btn1" bindtap="searchFlow">搜索flow</button>
+</view>
+
+
+
 <view wx:if="{{nlist==''}}" class="NonSelect">
   <image class="NonSelectImg" src="../assets/no.png"></image>
   <text class="NonSelectText">没有flow</text>
@@ -12,7 +19,7 @@
         <view class="flowtop">
           <text>{{item.time}}</text>
           <image style="width: 20px; height: 20px;"src="../assets/more_horiz.png" bindtap='sheet' data-id="{{item._id}}"></image>
-          <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" wx:for-index="idx">
+          <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
             <action-sheet-item>
                   <button class="share" open-type="share">     分享给微信好友     </button>
             </action-sheet-item>
@@ -51,3 +58,11 @@
   </view>
   
 </view>
+
+
+<!-- <view wx:if="{{nlist}}">
+
+</view>
+<view wx:else>
+
+</view> -->

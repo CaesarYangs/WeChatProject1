@@ -9,6 +9,7 @@ Page({
     nlist:[],
     actionSheetHidden: true,
     thismark:null,
+    currentid:null,
   },
 
   /**
@@ -116,8 +117,9 @@ Page({
     })
   },
   deleteItem:function(e){
+    var that = this;
     wx.cloud.database().collection('flow')
-    .doc(e.currentTarget.dataset.id)
+    .doc(that.data.currentid)
     .remove()
     .then(res=>{
       this.Refresh()
@@ -135,6 +137,13 @@ Page({
     })
     this.setData({
       actionSheetHidden: true,
+    })
+  },
+  sheet:function(e){
+    var id = e.currentTarget.dataset.id;
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden,
+      currentid: id,
     })
   },
 

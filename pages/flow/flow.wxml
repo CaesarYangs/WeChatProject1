@@ -9,7 +9,7 @@
         <image class='btnImg' style="width: 18px; height: 18px;" src='../assets/HashStraight.png'></image>
         <view>标签漫步</view>
       </button>
-      <button class="wanderbutton">
+      <button class="wanderbutton" bindtap="searchFlow">
         <image class='btnImg' style="width: 18px; height: 18px;" src='../assets/MagnifyingGlass.png'></image>
         <view>搜索</view>
       </button>
@@ -20,13 +20,13 @@
       <view class="item-content" >
         <view class="flowtop">
           <text>{{item.time}}</text>
-          <image style="width: 20px; height: 20px;"src="../assets/more_horiz.png" bindtap='listenerActionSheet' data-id="{{item._id}}"></image>
-          <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" wx:for-index="idx">
+          <image style="width: 20px; height: 20px;"src="../assets/more_horiz.png" bindtap='sheet' data-id="{{item._id}}"></image>
+          <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
             <action-sheet-item>
                   <button class="share" open-type="share">     分享给微信好友     </button>
             </action-sheet-item>
             <action-sheet-item>
-                  <view class="sheetbtn" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
+                  <view class="sheetbtn" bindtap="deleteItem">删除</view>
             </action-sheet-item>
             <action-sheet-item>
                   <view class="sheetbtn"> 编辑</view>
@@ -36,7 +36,6 @@
             <action-sheet-cancel class="sheetbtncancel">取消</action-sheet-cancel>
             </action-sheet>
 
-          
         </view>
         <view class="blank1"> </view>
         <view>

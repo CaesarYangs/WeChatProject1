@@ -10,6 +10,7 @@ Page({
     actionSheetHidden: true,
     showAll:false,
     total:null,
+    currentid:null,
   },
 
   /**
@@ -24,8 +25,10 @@ Page({
       .get() 
         .then(res=>{
           console.log("请求成功",res)
+          var list = []
+          list = res.data.reverse()
           this.setData({
-            nlist: res.data,
+            nlist: list
           })
           App.globalData.totalflow = res.total
         })
@@ -41,9 +44,11 @@ Page({
     .get() 
     .then(res=>{
       console.log("请求成功",res)
-          this.setData({
-            nlist: res.data
-          })
+      var list = []
+      list = res.data.reverse()
+      this.setData({
+        nlist: list
+      })
           this.loadmark()
     })
   },
@@ -93,8 +98,10 @@ Page({
       .get() 
         .then(res=>{
           console.log("请求成功",res)
+          var list = []
+          list = res.data.reverse()
           this.setData({
-            nlist: res.data
+            nlist: list
           })
           wx.stopPullDownRefresh();
           
@@ -132,26 +139,12 @@ Page({
     })
   },
 
-  touchstart: function (e) {
-    //开始触摸时 重置所有删除
-    let data = App.touch._touchstart(e, this.data.nlist) //将修改过的list setData
-    this.setData({
-      nlist: data
-    })
-  },
-
-  //滑动事件处理
-  touchmove: function (e) {
-    let data = App.touch._touchmove(e, this.data.nlist,'_id')//将修改过的list setData
-    this.setData({
-      nlist: data
-    })
-  },
 
   //删除事项
   deleteItem:function(e){
+    var that = this;
     wx.cloud.database().collection('flow')
-    .doc(e.currentTarget.dataset.id)
+    .doc(that.data.currentid)
     .remove()
     .then(res=>{
       this.Refresh()
@@ -192,9 +185,15 @@ listenerButton: function() {
   });
 },
 listenerActionSheet: function() {
-
   this.setData({
     actionSheetHidden: !this.data.actionSheetHidden,
+  })
+},
+sheet:function(e){
+  var id = e.currentTarget.dataset.id;
+  this.setData({
+    actionSheetHidden: !this.data.actionSheetHidden,
+    currentid: id,
   })
 },
 wandering:function(){
@@ -228,5 +227,10 @@ loadmark:function(){
   }
   console.log(App.globalData.marklist)
 },
+searchFlow:function(){
+  wx.navigateTo({
+    url: '../markSearch/markSearch',
+  })
+}
 
 })
