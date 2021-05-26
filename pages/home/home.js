@@ -24,7 +24,7 @@ Page({
   },
   searchDetail(){
     wx.navigateTo({
-      url: 'search/search',
+      url: '../search/search',
     })
   }, 
   

@@ -29,6 +29,11 @@
           "pathName": "pages/flow/flow",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/SettingPage/settingpage",
+          "pathName": "pages/SettingPage/settingpage",
+          "scene": null
         }
       ]
     }

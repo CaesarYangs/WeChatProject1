@@ -57,7 +57,7 @@
 </view>
 
 <view class="settext">
-  <view class="switch1texticon">
+  <view class="switch1texticon" bindtap="cardSetting">
     <image style="width: 22px; height: 22px;"src="../assets/settingicon/Keyboard.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>首页卡片样式设置</text>
@@ -66,20 +66,20 @@
 </view>
 
 <view class="switch1">
-  <text class="switch1text">flow模式是否显示全部内容</text>
+  <view class="switch2texticon">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/clear_all.png"></image>
+    <text class="switch2text">flow模式是否显示全部内容</text>
+  </view>
   <switch checked="{{switch_settingFlowShow}}" bindchange="switch3Change" color="#F05E1C"/>
 </view>
 
-<view class="switch1">
+<!-- <view class="switch1">
   <text class="switch1text">switch</text>
   <switch checked="{{switch4Checked}}" bindchange="switch1Change" color="#F05E1C"/>
-</view>
-<view class="switch1">
+</view> -->
+<!-- <view class="switch1">
   <text class="switch1text" bindtap="showOpenid">显示当前openid</text>
-</view>
-</view>
-<view class="switch1">
-  <text class="switch1text" bindtap="test1">建表</text>
+</view> -->
 </view>
 <view class="blank"> </view>
 
@@ -90,13 +90,13 @@
 
 <text class="smallListTitle">关于</text>
 
-<view class="settext">
+<view class="settext" bindtap="handleToWebSite2">
   <image style="width: 22px; height: 22px;"src="../assets/settingicon/Hand.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>帮助</text>
 </view>
 
-<view class="settext">
+<view class="settext" bindtap="handleToWebSite1">
   <image style="width: 22px; height: 22px;"src="../assets/settingicon/Path.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>关于软件</text>
@@ -105,7 +105,7 @@
 <view class="blank"> </view>
 
 
-<view class="settext">
+<view class="settext" bindtap="feedback"> 
   <image style="width: 22px; height: 22px;"src="../assets/settingicon/ChatDots.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>问题反馈</text>
@@ -116,7 +116,7 @@
 <view class="blank"> </view>
 <view class="setblock">
   <text class="smallListTitle">交个朋友</text>
-  <view class="settext">
+  <view class="settext" bindtap="handleToWebSite3">
     <image style="width: 22px; height: 22px;"src="../assets/settingicon/Users.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>关于开发者</text>

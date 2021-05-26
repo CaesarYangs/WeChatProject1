@@ -71,6 +71,7 @@ Page({
     this.setData({
       searchtitle: e.detail.value
     })
+    this.searchFlow()
   },
   searchFlow:function(){
     var that = this;

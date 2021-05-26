@@ -115,7 +115,9 @@ Page({
       })
     })
 
-
+    if(date){
+      this.subscribe()
+    }
     
   },
   inputTitle: function (e) {
@@ -291,6 +293,18 @@ onLoad: function() {
         }  
     });
 },  
-footerTap:app.footerTap
+footerTap:app.footerTap,
 
+subscribe:function(){
+wx.requestSubscribeMessage({
+  tmplIds: ['qSd6jESVwR_oZqMaUCuEJMJdxYEjQYjtFtNQpRKm9rM'],
+  success(res){
+    console.log("订阅成功"+res)
+  },
+  fail(err){
+    console.log("订阅失败"+err)
+  }
+})
+
+}
 })

@@ -191,5 +191,53 @@ Page({
   switch3Change:function(){
     app.globalData.settingFlowShow = !app.globalData.settingFlowShow;
     console.log(app.globalData.settingFlowShow)
-  }
+  },
+  cardSetting:function(){
+    wx.showModal({
+      title: '首页卡片样式设置',
+      content: '功能开发中... 请等待下次更新',
+      showCancel: false,
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    })
+    
+  },
+  feedback:function(){
+    wx.showModal({
+      title: 'Feedback是一件很重要的事',
+      content: '请邮件至：caesaryangs@outlook.com',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
+      }
+    })
+  },
+  handleToWebSite1() {
+    const url = 'https://github.com/CaesarYangs/WeChatProject1'; // 跳转的外链
+    const navtitle = '关于软件-github地址';
+    wx.navigateTo({
+      // 跳转到webview页面
+      url: `/pages/webview1/webview1?url=${url}&nav=${navtitle}`,
+    });
+  },
+  handleToWebSite2() {
+    const url = 'https://github.com/CaesarYangs/WeChatProject1/blob/master/README.md'; // 跳转的外链
+    const navtitle = '帮助文档'; 
+    wx.navigateTo({
+      // 跳转到webview页面
+      url: `/pages/webview1/webview1?url=${url}&nav=${navtitle}`,
+    });
+  },
+  handleToWebSite3() {
+    const url = 'https://github.com/CaesarYangs/WeChatProject1/blob/master/AboutDevelopers'; // 跳转的外链
+    const navtitle = 'AboutDevelopers';
+    wx.navigateTo({
+      // 跳转到webview页面
+      url: `/pages/webview1/webview1?url=${url}&nav=${navtitle}`,
+    });
+  },
 })

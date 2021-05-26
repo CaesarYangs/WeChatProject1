@@ -1,0 +1,63 @@
+<!--pages/home/search/search.wxml-->
+
+<!-- 搜索框view -->
+<view class="search_con">
+ 
+  <input class="search_input" auto-focus placeholder ="搜索--支持模糊查找" value='{{searchtitle}}'bindinput="inputTitle"/>
+  <button class= "search_btn" bindtap="search">搜索</button>
+ </view>
+<!-- 关键词 -->
+<view class="kw">
+  <ul>
+    <li data-text="任务" bindtouchend='controlurl'>任务</li>
+    <li data-text="重要" bindtouchend='controlurl'>重要</li>
+    <li data-text="学习" bindtouchend='controlurl'>学习</li>
+    <li data-text="作业" bindtouchend='controlurl'>作业</li>
+    <!-- <li data-text="DDL" bindtouchend='controlurl'>DDL😣</li> -->
+  </ul>
+</view>
+ 
+<!-- 搜索结果展示 -->
+<view wx:if="{{list==''}}" class="NonSelect">
+  <image class="NonSelectImg" src="../assets/no.png"></image>
+  <text class="NonSelectText">还没有任务</text>
+</view>
+  <view wx:else class="list-page">
+  <view class="list-item {{item.isTouchMove?'list-item-touch-active':''}}" wx:for="{{list}}"  bindtouchstart="touchstart" data-id="{{item._id}}" bindtouchmove="touchmove" >
+
+    <view class="item-content">
+      <view wx:if="{{item.done}}">
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/checked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+      </view>
+      <view wx:else> 
+        <image class="checkbox"style="width: 24px; height: 24px;"src="../assets/Unchecked.png" bindtap="checkMove" data-id="{{item._id}}" data-done="{{item.done}}" data-date="{{item.taskdate}}"></image>
+       </view>
+
+      
+      <view class="conent"  bindtap="seeDetail" data-id="{{item._id}}">
+        <view wx:if="{{item.done}}">
+          <view class="content-name-done">{{item.taskname}}</view>
+        </view>
+        <view wx:else>
+          <text>{{item.taskname}}</text>
+        </view>
+        <view wx:if='{{item.taskdate==""}}'> 
+        <!-- <text>{{user.sex}}</text> -->
+        </view>
+        <view wx:else>
+          <text class="content-info-done" wx:if="{{item.done}}">Due: {{item.taskdate}}</text>
+          <text class="content-info"wx:else>Due: {{item.taskdate}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="item-delete" bindtap="deleteItem" data-id="{{item._id}}">删除</view>
+  </view>
+  
+</view>
+
+
+
+
+
+

@@ -14,7 +14,8 @@
     "pages/setting/setting",
     "pages/flow/flow",
     "pages/analysis/analysis",
-    "pages/flowitem/flowitem"
+    "pages/flowitem/flowitem",
+    "pages/webview1/webview1"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -49,8 +50,8 @@
       },
       {
         "pagePath": "pages/flow/flow",
-        "iconPath": "pages/assets/flow/fl.png",
-        "selectedIconPath": "pages/assets/flow/fl-1.png"
+        "iconPath": "pages/assets/tabbar icons/all_inclusive.png",
+        "selectedIconPath": "pages/assets/tabbar icons/all_inclusive-1.png"
       },
       {
         "pagePath": "pages/SettingPage/settingpage",

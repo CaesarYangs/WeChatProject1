@@ -1,7 +1,11 @@
 <!--pages/markSearch/markSearch.wxml-->
+<!--搜索页-->
 <view class="searchblock">
-  <input class="weui-input" auto-focus placeholder ="搜索" value='{{searchtitle}}'bindinput="inputTitle"/>
-  <button class= "btn1" bindtap="searchFlow">搜索flow</button>
+  <view class="search">
+    <!-- <image style="width: 20px; height: 20px;" src="../assets/tabbar icons/search-line-1.png"></image> -->
+    <input class="weui-input" auto-focus placeholder ="搜索--支持模糊查找" value='{{searchtitle}}'bindinput="inputTitle"/>
+  </view>
+  <button class= "btn" bindtap="searchFlow">搜索flow</button>
 </view>
 
 
