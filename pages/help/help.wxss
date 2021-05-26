@@ -1,0 +1,4 @@
+/* pages/help/help.wxss */
+.md{
+  margin: 13px;
+}

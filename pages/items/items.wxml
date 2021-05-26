@@ -1,14 +1,20 @@
 <!--pages/items/items.wxml-->
-<view>
-  <text>任务名: {{task.taskname}}</text>
+<view class="main">
+  <view class="text">
+    <view class="t0">任务名: </view>
+    <text class="t1"> {{task.taskname}}</text>
+  </view>
+  <view class="blank1"> </view>
+  <view class="text">
+    <view class="t0"> 截止日期: </view>
+    <text class="t1">{{task.taskdate}}</text>
+  </view>
+  <view class="blank1"> </view>
+  <view class="text">
+    <view class="t0">备注: </view>
+    <text class="t1">{{task.tasknote}}</text>
+  </view>
 </view>
 
-<view>
-  <text>截止日期: {{task.taskdate}}</text>
-</view>
-
-<view>
-  <text>备注: {{task.tasknote}}</text>
-</view>
 
 

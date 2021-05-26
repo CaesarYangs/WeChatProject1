@@ -1,1 +1,15 @@
 /* pages/items/items.wxss */
+.main{
+  margin: 15px;
+}
+.text{
+  display: flex;
+  flex-direction: column;
+  border:solid;
+  border-radius: 15px;
+  border:#C4C4C4;
+  border-width: thin;
+}
+.blank1{
+  margin: 20px;
+}

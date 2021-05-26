@@ -1,13 +1,15 @@
 <view>
 
 <view class="user">
-  <view class="tapp">
+  <!-- <view class="tapp">
     <button open-type="getUserProfile" bindtap="auth" wx:if="{{showauth}}">授权登录</button>
     <label wx:if="{{showauth}}">未登录 请点击登录</label>
-  </view>
+  </view> -->
   <block>
-    <image class="userinfo-avatar" src="{{localuserInfo.avatarUrl}}"></image>
-    <text class="userNickName">{{localuserInfo.nickName}}</text>
+    <!-- <image class="userinfo-avatar" src="{{localuserInfo.avatarUrl}}"></image>
+    <text class="userNickName">{{localuserInfo.nickName}}</text> -->
+    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+    <open-data type="userNickName"></open-data>
   </block>
 </view>
   <!-- <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata"> -->
@@ -27,7 +29,7 @@
     </block> -->
 </view>
 
-<button type="default" bindtap="logout">退出登录</button>
+<!-- <button type="default" bindtap="logout">退出登录</button> -->
 
 
 
@@ -68,7 +70,7 @@
 <view class="switch1">
   <view class="switch2texticon">
     <image style="width: 22px; height: 22px;"src="../assets/settingicon/clear_all.png"></image>
-    <text class="switch2text">flow模式是否显示全部内容</text>
+    <text class="switch2text">flow模式显示全部内容</text>
   </view>
   <switch checked="{{switch_settingFlowShow}}" bindchange="switch3Change" color="#F05E1C"/>
 </view>
@@ -96,7 +98,7 @@
     <text>帮助</text>
 </view>
 
-<view class="settext" bindtap="handleToWebSite1">
+<view class="settext" bindtap="navtoAbout">
   <image style="width: 22px; height: 22px;"src="../assets/settingicon/Path.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>关于软件</text>
@@ -116,7 +118,7 @@
 <view class="blank"> </view>
 <view class="setblock">
   <text class="smallListTitle">交个朋友</text>
-  <view class="settext" bindtap="handleToWebSite3">
+  <view class="settext" bindtap="navtoAboutDev">
     <image style="width: 22px; height: 22px;"src="../assets/settingicon/Users.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>关于开发者</text>

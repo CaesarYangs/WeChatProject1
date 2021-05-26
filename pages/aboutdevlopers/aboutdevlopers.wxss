@@ -1,0 +1,4 @@
+/* pages/aboutdevlopers/aboutdevlopers.wxss */
+.md{
+  margin: 13px;
+}

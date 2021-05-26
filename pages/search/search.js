@@ -45,7 +45,7 @@ Page({
     .doc(e.currentTarget.dataset.id)
     .remove()
     .then(res=>{
-      this.Refresh()
+      this.search()
       wx.showToast({
         title: '删除成功',
         icon:"success",
@@ -53,12 +53,13 @@ Page({
       })
     })
     .catch(res=>{
+      console.log(res)
       wx.showToast({
         title: '删除失败',
         duration:1000
       })
     })
-    this.search()
+    
   },
   checkMove:function(e){
     wx.cloud.database().collection('task2')
@@ -78,7 +79,7 @@ Page({
       //   duration:1000
       // })
       wx.vibrateShort()
-      this.Refresh()
+      this.search()
     })
     .catch(res=>{
       console.log("修改失败",res)
@@ -99,7 +100,7 @@ Page({
       //   duration:1000
       // })
       wx.vibrateShort()
-      this.Refresh()
+      this.search()
     })
     .catch(res=>{
       console.log("修改失败",res)

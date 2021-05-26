@@ -1,6 +1,6 @@
 /* pages/flow/flow.wxss */
 page{
-  background-color: #FAFAFA
+  background-color: #FFFFFF
 }
 
 .list-page{

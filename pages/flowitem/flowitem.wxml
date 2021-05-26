@@ -1,12 +1,17 @@
 <!--pages/flowitem/flowitem.wxml-->
-<view>
-  <text>Flow: {{flows.flow}}</text>
-</view>
-
-<view>
-  <text>mark: {{flows.mark}}</text>
-</view>
-
-<view>
-  <text>time: {{flows.time}}</text>
+<view class="main">
+  <view class="text">
+    <view class="t0">Flow: </view>
+    <text class="t1"> {{flows.flow}}</text>
+  </view>
+  <view class="blank1"> </view>
+  <view class="text">
+    <view class="t0"> mark: </view>
+    <text class="t1">{{flows.mark}}</text>
+  </view>
+  <view class="blank1"> </view>
+  <view class="text">
+    <view class="t0">time: </view>
+    <text class="t1">{{flows.time}}</text>
+  </view>
 </view>

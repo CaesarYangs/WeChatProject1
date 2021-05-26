@@ -15,7 +15,11 @@
     "pages/flow/flow",
     "pages/analysis/analysis",
     "pages/flowitem/flowitem",
-    "pages/webview1/webview1"
+    "pages/webview1/webview1",
+    "pages/help/help",
+    "pages/about/about",
+    "pages/feedback/feedback",
+    "pages/aboutdevlopers/aboutdevlopers"
   ],
   "window": {
     "backgroundTextStyle": "dark",

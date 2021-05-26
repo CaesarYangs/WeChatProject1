@@ -6,18 +6,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    localuserInfo:{},
-    motto: 'Hello World',
+    userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     switch_settingFastNoteChecked:false,
     nn:null,
     showauth:true,
     switch1Checked: false,
     switch3Checked: false,
 
+  },
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    })
+  },
+  getUserInfo(e) {
+    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
+    console.log(e)
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   },
 
   logout:function(){
@@ -35,37 +55,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
+    // if (wx.getUserProfile) {
       
-      wx.getStorage({
-        key: 'loginkey',
-        success (res) {
-          app.globalData.userInfo=res.data.userInfo,
-          console.log("feched")
-        }
-      })
+    //   wx.getStorage({
+    //     key: 'loginkey',
+    //     success (res) {
+    //       app.globalData.userInfo=res.data.userInfo,
+    //       console.log("feched")
+    //     }
+    //   })
+    //   this.setData({
+    //     localuserInfo:app.globalData.userInfo,
+    //     showauth:false,
+    //     canIUseGetUserProfile: true
+    //   })
+    //   this.test()
+    // }
+    // var c = app.globalData.settingFastNote
+    // this.setData({
+    //   switch_settingFastNoteChecked:c
+    // })
+
+    // wx.cloud.callFunction({
+    //   name: 'getData',
+    // })
+    // .then(res=>{
+    //   console.log("云函数请求成功",res)
+    //   app.globalData.openid = res.result.openid
+    // })
+    // .catch(res=>{
+    //   console.log("调用云函数失败",res)
+    // })
+    if (wx.getUserProfile) {
       this.setData({
-        localuserInfo:app.globalData.userInfo,
-        showauth:false,
         canIUseGetUserProfile: true
       })
-      this.test()
     }
-    var c = app.globalData.settingFastNote
-    this.setData({
-      switch_settingFastNoteChecked:c
-    })
-
-    wx.cloud.callFunction({
-      name: 'getData',
-    })
-    .then(res=>{
-      console.log("云函数请求成功",res)
-      app.globalData.openid = res.result.openid
-    })
-    .catch(res=>{
-      console.log("调用云函数失败",res)
-    })
 
   },
 
@@ -209,6 +234,7 @@ Page({
     wx.showModal({
       title: 'Feedback是一件很重要的事',
       content: '请邮件至：caesaryangs@outlook.com',
+      showCancel: false,
       success (res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -225,11 +251,8 @@ Page({
     });
   },
   handleToWebSite2() {
-    const url = 'https://github.com/CaesarYangs/WeChatProject1/blob/master/README.md'; // 跳转的外链
-    const navtitle = '帮助文档'; 
     wx.navigateTo({
-      // 跳转到webview页面
-      url: `/pages/webview1/webview1?url=${url}&nav=${navtitle}`,
+      url: `../help/help`
     });
   },
   handleToWebSite3() {
@@ -238,6 +261,21 @@ Page({
     wx.navigateTo({
       // 跳转到webview页面
       url: `/pages/webview1/webview1?url=${url}&nav=${navtitle}`,
+    });
+  },
+  navtoAbout:function(){
+    wx.navigateTo({
+      url: `../about/about`
+    });
+  },
+  navtoAboutDev:function(){
+    wx.navigateTo({
+      url: `../aboutdevlopers/aboutdevlopers`
+    });
+  },
+  navtoFeedback:function(){
+    wx.navigateTo({
+      url: `../feedback/feedback`
     });
   },
 })

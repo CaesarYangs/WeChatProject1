@@ -1,0 +1,5 @@
+<!--pages/aboutdevlopers/aboutdevlopers.wxml-->
+<view class="md">
+  <wemark md="{{md}}" link highlight type="wemark"></wemark>
+</view>
+

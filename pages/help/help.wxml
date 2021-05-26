@@ -1,0 +1,6 @@
+<!--pages/help/help.wxml-->
+<view class="md">
+  <wemark md="{{md}}" link highlight type="wemark"></wemark>
+</view>
+
+
