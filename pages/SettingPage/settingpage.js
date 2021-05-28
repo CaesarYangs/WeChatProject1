@@ -76,16 +76,16 @@ Page({
     //   switch_settingFastNoteChecked:c
     // })
 
-    // wx.cloud.callFunction({
-    //   name: 'getData',
-    // })
-    // .then(res=>{
-    //   console.log("云函数请求成功",res)
-    //   app.globalData.openid = res.result.openid
-    // })
-    // .catch(res=>{
-    //   console.log("调用云函数失败",res)
-    // })
+    wx.cloud.callFunction({
+      name: 'getData',
+    })
+    .then(res=>{
+      console.log("云函数请求成功",res)
+      app.globalData.openid = res.result.openid
+    })
+    .catch(res=>{
+      console.log("调用云函数失败",res)
+    })
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true

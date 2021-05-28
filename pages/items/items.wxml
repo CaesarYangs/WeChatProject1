@@ -1,18 +1,18 @@
 <!--pages/items/items.wxml-->
-<view class="main">
+<view class="main" wx:for="{{task}}">
   <view class="text">
     <view class="t0">任务名: </view>
-    <text class="t1"> {{task.taskname}}</text>
+    <text class="t1"> {{item.taskname}}</text>
   </view>
   <view class="blank1"> </view>
   <view class="text">
     <view class="t0"> 截止日期: </view>
-    <text class="t1">{{task.taskdate}}</text>
+    <text class="t1">{{item.taskdate}}</text>
   </view>
   <view class="blank1"> </view>
   <view class="text">
     <view class="t0">备注: </view>
-    <text class="t1">{{task.tasknote}}</text>
+    <text class="t1">{{item.tasknote}}</text>
   </view>
 </view>
 

@@ -89,51 +89,56 @@ Page({
     console.log(title)
 
     // v1.0.0版本 使用微信云开发数据库
-    wx.cloud.database().collection('task2')
-    .add({
+    // wx.cloud.database().collection('task2')
+    // .add({
+    //   data:{
+    //     taskname:title,
+    //     taskdate:date,
+    //     tasknote:note,
+    //     done:false
+    //   }
+    // })
+    // .then(res=>{
+    //     console.log('添加成功',res)
+    //     wx.showToast({
+    //       title: '添加成功',
+    //       icon:"success"
+    //     })
+    //     this.clearTitle()
+    //     this.clearDate()
+    // })
+    // .catch(res=>{
+    //   console.log('添加失败',res)
+    //   wx.showToast({
+    //     title: '添加失败 请重试',
+    //     icon:"loading"
+    //   })
+    // })
+
+    //v2.0.0beta版本 使用自建服务器地址mysql数据库
+    let sql = "INSERT INTO `mini1`.`tasks` (`_openid`, `taskname`, `done`, `tasknote`, `taskdate`) VALUES ("+'"'+app.globalData.openid+'"'+",'"+title+"',0,'"+note+"', '"+date+"')"
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
       data:{
-        taskname:title,
-        taskdate:date,
-        tasknote:note,
-        done:false
-      }
-    })
-    .then(res=>{
-        console.log('添加成功',res)
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res)
         wx.showToast({
           title: '添加成功',
           icon:"success"
         })
         this.clearTitle()
         this.clearDate()
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+        wx.showToast({
+          title: '添加失败 请重试',
+          icon:"loading"
+        })
+      }
     })
-    .catch(res=>{
-      console.log('添加失败',res)
-      wx.showToast({
-        title: '添加失败 请重试',
-        icon:"loading"
-      })
-    })
-
-    //v2.0.0beta版本 使用自建服务器地址mysql数据库
-    // let sql = 'INSERT INTO `mini1`.`tasks` (`openid`, `taskname`, `done`, `id`, `tasknote`) VALUES ('0', '0', 0, 0, '0')'
-    // let params = [];
-    // wx.cloud.callFunction({
-    //   name:'mysqlConnect',
-    //   data:{
-    //     sql:sql,
-    //     taskname:title,
-    //     taskdate:date,
-    //     tasknote:note,
-    //     done:false
-    //   },
-    //   success: res=>{
-    //     console.log(res)
-    //   },
-    //   fail: err =>{
-    //     console.log('[云函数] [db-operator] 调用失败',err)
-    //   }
-    // })
   
 
     if(date){
@@ -244,28 +249,52 @@ Page({
     var fmark = this.data.flowmark
     var time = util.formatTime(new Date());
 
-    wx.cloud.database().collection('flow')
-    .add({
+    // wx.cloud.database().collection('flow')
+    // .add({
+    //   data:{
+    //     time:time,
+    //     flow:fflow,
+    //     mark:'#'+fmark
+    //   }
+    // })
+    // .then(res=>{
+    //     console.log('添加成功',res)
+    //     wx.showToast({
+    //       title: '添加成功',
+    //       icon:"success"
+    //     })
+    //     this.clearFlow()
+    // })
+    // .catch(res=>{
+    //   console.log('添加失败',res)
+    //   wx.showToast({
+    //     title: '添加失败 请重试',
+    //     icon:"loading"
+    //   })
+    // })
+   
+    let sql = " INSERT INTO `mini1`.`flow` (`_openid`, `flow`, `mark`,`time`) VALUES ("+'"'+app.globalData.openid+'"'+", '"+fflow+"', '#"+fmark+"','"+time+"')"
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
       data:{
-        time:time,
-        flow:fflow,
-        mark:'#'+fmark
-      }
-    })
-    .then(res=>{
-        console.log('添加成功',res)
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res)
         wx.showToast({
           title: '添加成功',
           icon:"success"
         })
-        this.clearFlow()
-    })
-    .catch(res=>{
-      console.log('添加失败',res)
-      wx.showToast({
-        title: '添加失败 请重试',
-        icon:"loading"
-      })
+        this.clearTitle()
+        this.clearDate()
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+        wx.showToast({
+          title: '添加失败 请重试',
+          icon:"loading"
+        })
+      }
     })
   },
 

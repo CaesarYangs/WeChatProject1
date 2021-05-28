@@ -145,21 +145,38 @@ Page({
   },
 
   getData:function(){
-    wx.cloud.database().collection('task2')
-    .where({
-      _openid:app.globalData.openid,
-      taskdate:app.globalData.Date
-    })
-    .get()
-    .then(res=>{
-      console.log("请求成功",res)
-      this.setData({
-        clist: res.data
-      })
-    })
-    .catch(err=>{
-      console.log("请求成功",err)
-    })
+    // wx.cloud.database().collection('task2')
+    // .where({
+    //   _openid:app.globalData.openid,
+    //   taskdate:app.globalData.Date
+    // })
+    // .get()
+    // .then(res=>{
+    //   console.log("请求成功",res)
+    //   this.setData({
+    //     clist: res.data
+    //   })
+    // })
+    // .catch(err=>{
+    //   console.log("请求成功",err)
+    // })
+
+    let sql = "SELECT * FROM tasks WHERE _openid = '"+app.globalData.openid+"' AND taskdate = '"+app.globalData.Date+"'"
+        wx.cloud.callFunction({
+          name:'mysqlConnect',
+          data:{
+            sql:sql,
+          },
+          success: res=>{
+            console.log(res.result.res[0])
+            this.setData({
+              clist: res.result.res[0]
+            })
+          },
+          fail: err =>{
+            console.log('[云函数] [db-operator] 调用失败',err)
+          }
+        })
   },
   touchstart: function (e) {
     //开始触摸时 重置所有删除
@@ -179,95 +196,155 @@ Page({
 
   //删除事项
   deleteItem:function(e){
-    wx.cloud.database().collection('task2')
-    .doc(e.currentTarget.dataset.id)
-    .remove()
-    .then(res=>{
-      this.Refresh()
-      wx.showToast({
-        title: '删除成功',
-        icon:"success",
-        duration:1000
-      })
-    })
-    .catch(res=>{
-      wx.showToast({
-        title: '删除失败',
-        duration:1000
-      })
+    // wx.cloud.database().collection('task2')
+    // .doc(e.currentTarget.dataset.id)
+    // .remove()
+    // .then(res=>{
+    //   this.Refresh()
+    //   wx.showToast({
+    //     title: '删除成功',
+    //     icon:"success",
+    //     duration:1000
+    //   })
+    // })
+    // .catch(res=>{
+    //   wx.showToast({
+    //     title: '删除失败',
+    //     duration:1000
+    //   })
+    // })
+    //v2.0.0使用自建服务器mysql数据库
+    let sql = "DELETE FROM `mini1`.`tasks` WHERE `_id`=" +e.currentTarget.dataset.id;
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
+      data:{
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res.result.res[0])
+        this.Refresh()
+           wx.showToast({
+            title: '删除成功',
+            icon:"success",
+            duration:1000
+          })
+        
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+      }
     })
 
   },
   checkMove:function(e){
-    wx.cloud.database().collection('task2')
-    if(e.currentTarget.dataset.done){
-      wx.cloud.database().collection('task2')
-    .doc(e.currentTarget.dataset.id)
-    .update({
-      data:{
-        done:false
-      }
+    // wx.cloud.database().collection('task2')
+    // if(e.currentTarget.dataset.done){
+    //   wx.cloud.database().collection('task2')
+    // .doc(e.currentTarget.dataset.id)
+    // .update({
+    //   data:{
+    //     done:false
+    //   }
     
-    })
-    .then(res=>{
-      // wx.showToast({
-      //   title: 'Tap Check',
-      //   icon:"success",
-      //   duration:1000
-      // })
-      wx.vibrateShort()
-      this.Refresh()
-    })
-    .catch(res=>{
-      console.log("修改失败",res)
-    })
-    }else{
-      wx.cloud.database().collection('task2')
-    .doc(e.currentTarget.dataset.id)
-    .update({
-      data:{
-        done:true
-      }
+    // })
+    // .then(res=>{
+    //   // wx.showToast({
+    //   //   title: 'Tap Check',
+    //   //   icon:"success",
+    //   //   duration:1000
+    //   // })
+    //   wx.vibrateShort()
+    //   this.Refresh()
+    // })
+    // .catch(res=>{
+    //   console.log("修改失败",res)
+    // })
+    // }else{
+    //   wx.cloud.database().collection('task2')
+    // .doc(e.currentTarget.dataset.id)
+    // .update({
+    //   data:{
+    //     done:true
+    //   }
     
-    })
-    .then(res=>{
-      // wx.showToast({
-      //   title: 'Tap Check',
-      //   icon:"success",
-      //   duration:1000
-      // })
-      wx.vibrateShort()
-      this.Refresh()
-    })
-    .catch(res=>{
-      console.log("修改失败",res)
-    })
-    }
+    // })
+    // .then(res=>{
+    //   // wx.showToast({
+    //   //   title: 'Tap Check',
+    //   //   icon:"success",
+    //   //   duration:1000
+    //   // })
+    //   wx.vibrateShort()
+    //   this.Refresh()
+    // })
+    // .catch(res=>{
+    //   console.log("修改失败",res)
+    // })
+    // }
+     //v2.0.0连接自建服务器mysql数据库
+
+     let sql = "UPDATE `mini1`.`tasks` SET `done` = "+!e.currentTarget.dataset.done+" WHERE `_id` =" +e.currentTarget.dataset.id;
+     wx.cloud.callFunction({
+       name:'mysqlConnect',
+       data:{
+         sql:sql,
+       },
+       success: res=>{
+         this.Refresh()
+         wx.vibrateShort()
+            wx.showToast({
+             title: '修改成功',
+             icon:"success",
+             duration:1000
+           })
+         
+       },
+       fail: err =>{
+         console.log('[云函数] [db-operator] 调用失败',err)
+       }
+     })
     
     
   },
   Refresh: function(){
-    wx.cloud.database().collection('task2')
-    .where({
-      taskdate:app.globalData.Date,
-      _openid:app.globalData.openid
-    })
-    .get()
-    .then(res=>{
-      console.log("请求成功",res)
+  //   wx.cloud.database().collection('task2')
+  //   .where({
+  //     taskdate:app.globalData.Date,
+  //     _openid:app.globalData.openid
+  //   })
+  //   .get()
+  //   .then(res=>{
+  //     console.log("请求成功",res)
+  //     this.setData({
+  //       clist: res.data
+  //     })
+  //   })
+  //   .catch(err=>{
+  //     console.log("请求失败",err)
+  //   })
+  // },
+  // seeDetail:function(e){
+  //   console.log("点击了跳转操作",e.currentTarget.dataset.id)
+  //   wx.navigateTo({
+  //     url: '../items/items?id=' + e.currentTarget.dataset.id,
+  //   })
+
+  let sql = "SELECT * FROM tasks WHERE _openid = '"+app.globalData.openid+"' AND taskdate = '"+app.globalData.Date+"'"
+  wx.cloud.callFunction({
+    name:'mysqlConnect',
+    data:{
+      sql:sql,
+    },
+    success: res=>{
+      console.log(res.result.res[0])
       this.setData({
-        clist: res.data
+        clist: res.result.res[0]
       })
-    })
-    .catch(err=>{
-      console.log("请求失败",err)
-    })
-  },
-  seeDetail:function(e){
-    console.log("点击了跳转操作",e.currentTarget.dataset.id)
-    wx.navigateTo({
-      url: '../items/items?id=' + e.currentTarget.dataset.id,
-    })
+    },
+    fail: err =>{
+      console.log('[云函数] [db-operator] 调用失败',err)
+    }
+  })
   },
 
 })

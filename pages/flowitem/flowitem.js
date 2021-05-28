@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    flows:[]
   },
 
   /**
@@ -13,17 +13,36 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id
-    wx.cloud.database().collection('flow')
-    .doc(id)
-    .get()
-    .then(res=>{
-      this.setData({
-        flows:res.data
-      })
-      console.log('详情请求成功',res)
-    })
-    .catch(res=>{
-      console.log('详情请求失败',res)
+    // wx.cloud.database().collection('flow')
+    // .doc(id)
+    // .get()
+    // .then(res=>{
+    //   this.setData({
+    //     flows:res.data
+    //   })
+    //   console.log('详情请求成功',res)
+    // })
+    // .catch(res=>{
+    //   console.log('详情请求失败',res)
+    // })
+
+    //v2.0.0beta版本 使用自建服务器地址mysql数据库
+    
+    let sql = "SELECT * FROM `flow` WHERE `_id` ="+id;
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
+      data:{
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res.result.res[0])
+        this.setData({
+          flows: res.result.res[0]
+        })
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+      }
     })
   },
 
