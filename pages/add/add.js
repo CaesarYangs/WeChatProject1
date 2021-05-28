@@ -88,7 +88,7 @@ Page({
     var note= this.data.taskNote
     console.log(title)
 
-
+    // v1.0.0版本 使用微信云开发数据库
     wx.cloud.database().collection('task2')
     .add({
       data:{
@@ -114,6 +114,27 @@ Page({
         icon:"loading"
       })
     })
+
+    //v2.0.0beta版本 使用自建服务器地址mysql数据库
+    // let sql = 'INSERT INTO `mini1`.`tasks` (`openid`, `taskname`, `done`, `id`, `tasknote`) VALUES ('0', '0', 0, 0, '0')'
+    // let params = [];
+    // wx.cloud.callFunction({
+    //   name:'mysqlConnect',
+    //   data:{
+    //     sql:sql,
+    //     taskname:title,
+    //     taskdate:date,
+    //     tasknote:note,
+    //     done:false
+    //   },
+    //   success: res=>{
+    //     console.log(res)
+    //   },
+    //   fail: err =>{
+    //     console.log('[云函数] [db-operator] 调用失败',err)
+    //   }
+    // })
+  
 
     if(date){
       this.subscribe()

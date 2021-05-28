@@ -34,21 +34,59 @@ Page({
    */
   onLoad: function(options) {
     
-    wx.cloud.database().collection('task2')
-      wx.cloud.database().collection('task2')
-      .where({
-        _openid:App.globalData.openid
-      })
-      .get() 
-        .then(res=>{
-          console.log("请求成功",res)
-          this.setData({
-            list: res.data
-          })
+    // wx.cloud.database().collection('task2')
+    //   wx.cloud.database().collection('task2')
+    //   .where({
+    //     _openid:App.globalData.openid
+    //   })
+    //   .get() 
+    //     .then(res=>{
+    //       console.log("请求成功",res)
+    //       this.setData({
+    //         list: res.data
+    //       })
+    //     })
+    //     .catch(err=>{
+    //       console.log("请求成功",err)
+    //     })
+    
+    // wx.request({
+    //   url: 'https://panel.cyang.site/flowence/test.php',
+    //   method:'get',
+    //   data:{
+    //     name:'yr'
+    //   },
+    //   header:{
+    //     'content-type':'application/json'
+    //   },
+    //   success(res){
+    //     console.log("与cy服务器建立连接"+res)
+    //     console.log(res.data)
+    //   },
+    //   fail(err){
+    //     console.log("连接失败"+res)
+    //   }
+    // })
+
+    //v2.0.0beta版本 使用自建服务器地址mysql数据库
+    let sql = 'SELECT * FROM `mini1`.`tasks` '
+    let params = [];
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
+      data:{
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res.result.res[0])
+        this.setData({
+          list: res.result.res[0]
         })
-        .catch(err=>{
-          console.log("请求成功",err)
-        })
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+      }
+    })
+    
   },
   
   /**

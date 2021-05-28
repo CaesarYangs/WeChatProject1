@@ -278,4 +278,21 @@ Page({
       url: `../feedback/feedback`
     });
   },
+  dbtest:function(){
+    let sql = 'SELECT * FROM `mini1`.`Users`';
+    let params = [];
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
+      data:{
+        sql:sql,
+        params:params
+      },
+      success: res=>{
+        console.log(res)
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+      }
+    })
+  },
 })
