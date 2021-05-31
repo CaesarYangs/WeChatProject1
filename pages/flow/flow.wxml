@@ -22,14 +22,14 @@
           <text>{{item.time}}</text>
           <image style="width: 20px; height: 20px;"src="../assets/more_horiz.png" bindtap='sheet' data-id="{{item._id}}"></image>
           <action-sheet  hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet">
-            <action-sheet-item>
+            <!-- <action-sheet-item>
                   <button class="share" open-type="share">     分享给微信好友     </button>
-            </action-sheet-item>
+            </action-sheet-item> -->
             <action-sheet-item>
                   <view class="sheetbtn" bindtap="deleteItem">删除</view>
             </action-sheet-item>
             <action-sheet-item>
-                  <view class="sheetbtn"> 编辑</view>
+                  <view class="sheetbtn" bindtap="seeD"> 编辑</view>
             </action-sheet-item>
 
 

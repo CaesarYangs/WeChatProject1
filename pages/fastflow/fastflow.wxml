@@ -1,0 +1,6 @@
+<!--pages/fastflow/fastflow.wxml-->
+<view class="search_con">
+ 
+ <input class="search_input" auto-focus placeholder ="输入公众号传递的api以绑定" value='{{pid}}'bindinput="inputTitle"/>
+ <button class= "search_btn" bindtap="search">绑定</button>
+</view>

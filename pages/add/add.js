@@ -285,8 +285,7 @@ Page({
           title: '添加成功',
           icon:"success"
         })
-        this.clearTitle()
-        this.clearDate()
+        this.clearFlow()
       },
       fail: err =>{
         console.log('[云函数] [db-operator] 调用失败',err)

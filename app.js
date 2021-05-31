@@ -39,6 +39,8 @@ App({
     nowSelectedDate:null,
     nowSelectedMonth:null,
     nowSelectedYear:null,
+    switch_settingFastFlow:null,
+    pid:null,
     Date:null,
     settingFlowShow:false,
     marklist:[],

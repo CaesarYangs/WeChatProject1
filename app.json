@@ -11,6 +11,7 @@
     "pages/calendar_comp/index",
     "pages/index/index",
     "pages/logs/logs",
+    "pages/fastflow/fastflow",
     "pages/setting/setting",
     "pages/flow/flow",
     "pages/analysis/analysis",

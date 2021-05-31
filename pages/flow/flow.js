@@ -44,7 +44,7 @@ Page({
       console.log("云函数请求成功",res)
       App.globalData.openid = res.result.openid
     // console.log()
-    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'
+    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'+"OR `_pid`="+'"'+App.globalData.pid+'"'
     wx.cloud.callFunction({
       name:'mysqlConnect',
       data:{
@@ -89,7 +89,7 @@ Page({
     //       this.loadmark()
     // })
     //v2.0.0使用自建服务器mysql数据库
-    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'
+    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'+"OR `_pid`="+'"'+App.globalData.pid+'"'
     wx.cloud.callFunction({
       name:'mysqlConnect',
       data:{
@@ -170,7 +170,7 @@ Page({
     //     .catch(err=>{
     //       console.log("请求成功",err)
     //     })
-    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'
+    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+App.globalData.openid+'"'+"OR `_pid`="+'"'+App.globalData.pid+'"'
     wx.cloud.callFunction({
       name:'mysqlConnect',
       data:{
@@ -218,6 +218,16 @@ Page({
       url: '../flowitem/flowitem?id=' + e.currentTarget.dataset.id,
     })
   },
+
+  seeD:function(e){
+    var that = this;
+    var id = that.data.currentid
+    console.log("点击了跳转操作",id)
+    wx.navigateTo({
+      url: '../flowitem/flowitem?id=' + id,
+    })
+  },
+
 
 
   //删除事项

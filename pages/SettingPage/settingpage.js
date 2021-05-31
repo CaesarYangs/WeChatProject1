@@ -16,6 +16,7 @@ Page({
     showauth:true,
     switch1Checked: false,
     switch3Checked: false,
+    switch_settingFastFlow:false,
 
   },
   getUserProfile(e) {
@@ -295,4 +296,22 @@ Page({
       }
     })
   },
+  fastFlowChange:function(e){
+    app.globalData.switch_settingFastFlow = e.detail.value
+    if(app.globalData.switch_settingFastFlow == true){
+      wx.navigateTo({
+        url: '../fastflow/fastflow',
+      })
+    }else{
+     app.globalData.pid = null
+     app.globalData.switch_settingFastFlow = false
+     wx.showToast({
+       title: '已关闭',
+     })
+    }
+  },
+  switch_settingFastFlow:function(e){
+    
+    console.log(app.globalData.switch_settingFastFlow)
+  }
 })

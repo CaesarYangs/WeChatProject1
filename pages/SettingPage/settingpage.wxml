@@ -82,13 +82,21 @@
 <!-- <view class="switch1">
   <text class="switch1text" bindtap="showOpenid">显示当前openid</text>
 </view> -->
-<view class="settext">
+<!-- <view class="settext">
   <view class="switch1texticon" bindtap="dbtest">
     <image style="width: 22px; height: 22px;"src="../assets/settingicon/Keyboard.png"></image>
     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
     <text>dbtest</text>
   </view>
   
+</view> -->
+
+<view class="switch1">
+  <view class="switch2texticon">
+    <image style="width: 22px; height: 22px;"src="../assets/settingicon/ArrowBendDoubleUpRight.png"></image>
+    <text class="switch2text">启动微信公众号快速记录</text>
+  </view>
+  <switch checked="{{switch_settingFastFlow}}" bindchange="fastFlowChange" color="#F05E1C"/>
 </view>
 
 </view>

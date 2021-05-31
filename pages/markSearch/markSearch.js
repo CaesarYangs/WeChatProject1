@@ -80,29 +80,54 @@ Page({
       nlist:[]
     })
 
-    const db = wx.cloud.database()
-    wx.cloud.database().collection('flow')
-    .where({
-      _openid:app.globalData.openid,
-      flow: db.RegExp({
-        regexp:'.*'+ key,
-        options:'i'
-      })
-    })
-    .get() 
-      .then(res=>{
-        console.log("请求成功",res)
+    // const db = wx.cloud.database()
+    // wx.cloud.database().collection('flow')
+    // .where({
+    //   _openid:app.globalData.openid,
+    //   flow: db.RegExp({
+    //     regexp:'.*'+ key,
+    //     options:'i'
+    //   })
+    // })
+    // .get() 
+    //   .then(res=>{
+    //     console.log("请求成功",res)
+    //     var list = []
+    //     list = res.data
+    //     list.reverse()
+    //     this.setData({
+    //       nlist: list,
+    //     })
+        
+    //   })
+    //   .catch(err=>{
+    //     console.log("请求成功",err)
+    //   })
+
+    let sql = "SELECT * FROM `mini1`.`flow` WHERE `_openid`= "+'"'+app.globalData.openid+'"'+"AND `flow` LIKE "+"'%"+key+"%'"
+    wx.cloud.callFunction({
+      name:'mysqlConnect',
+      data:{
+        sql:sql,
+      },
+      success: res=>{
+        console.log(res.result.res[0])
+        // this.setData({
+        //   nlist: res.result.res[0]
+        // })
         var list = []
-        list = res.data
-        list.reverse()
+        list = res.result.res[0].reverse()
         this.setData({
           nlist: list,
         })
-        
-      })
-      .catch(err=>{
-        console.log("请求成功",err)
-      })
+         
+      },
+      fail: err =>{
+        console.log('[云函数] [db-operator] 调用失败',err)
+      }
+    })
+
+
   },
 
 actionSheetTap: function(e) {
@@ -150,25 +175,59 @@ Refresh:function(){
 //删除事项
 deleteItem:function(e){
   var that = this;
-  wx.cloud.database().collection('flow')
-  .doc(that.data.currentid)
-  .remove()
-  .then(res=>{
-    this.Refresh()
-    wx.showToast({
-      title: '删除成功',
-      icon:"success",
-      duration:1000
-    })
+  // wx.cloud.database().collection('flow')
+  // .doc(that.data.currentid)
+  // .remove()
+  // .then(res=>{
+  //   this.Refresh()
+  //   wx.showToast({
+  //     title: '删除成功',
+  //     icon:"success",
+  //     duration:1000
+  //   })
+  // })
+  // .catch(res=>{
+  //   wx.showToast({
+  //     title: '删除失败',
+  //     duration:1000
+  //   })
+  // })
+  // this.setData({
+  //   actionSheetHidden: true,
+  // })
+  
+  //v2.0.0使用自建服务器mysql数据库
+  let sql = "DELETE FROM `mini1`.`flow` WHERE `_id`=" +"'"+that.data.currentid+"'";
+  wx.cloud.callFunction({
+    name:'mysqlConnect',
+    data:{
+      sql:sql,
+    },
+    success: res=>{
+      console.log(res.result.res[0])
+      this.Refresh()
+         wx.showToast({
+          title: '删除成功',
+          icon:"success",
+          duration:1000
+        })
+       this.setData({
+        actionSheetHidden: true,
+      })
+    },
+    fail: err =>{
+      console.log('[云函数] [db-operator] 调用失败',err)
+    }
+    
   })
-  .catch(res=>{
-    wx.showToast({
-      title: '删除失败',
-      duration:1000
-    })
-  })
-  this.setData({
-    actionSheetHidden: true,
+  
+},
+seeD:function(e){
+  var that = this;
+  var id = that.data.currentid
+  console.log("点击了跳转操作",id)
+  wx.navigateTo({
+    url: '../flowitem/flowitem?id=' + id,
   })
 },
 })
