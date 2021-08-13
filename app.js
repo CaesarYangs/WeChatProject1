@@ -27,6 +27,8 @@ App({
     })
     
     
+
+    
     console.log(userinfo)
   },
   globalData: {
